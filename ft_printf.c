@@ -67,6 +67,7 @@ int ft_spec(const char * restrict fo, t_flags *fl)
 	{
 			if (ft_flags(fo + f, fl) == -1)
 				return (-1);
+			f += (fl->len - 2);
 	}
 	if (fo[f] == 'd' || fo[f] == 'i')
 		ft_dispec(fl, fo + f);
@@ -115,5 +116,5 @@ int main(void)
 	int d = 127;
 	int d1 = 0;
 
-	ft_printf("hey %% %-+ 0d", d);
+	ft_printf("hey %% %+++00+-+ ---00   0+0-d", d);
 }
