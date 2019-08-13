@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/13 20:47:51 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/13 22:04:48 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,26 @@
 
 int ft_flags(const char *restrict fo, t_flags *fl)
 {
-	if (fo[fl->len - 1])
-		return (ft_flagsdi(fo, fl));
+	if (fo[fl->len - 1] == 'l' || fo[fl->len - 1] == 'h' || fo[fl->len - 1] == 'L')
+	{
+		if (fo[fl->len - 1] == 'L')
+		{
+			if (fo[fl->len] == 'f')
+				return (ft_flagsf(fo, fl));
+			else
+				return (-1);
+		}
+		if (fo[fl->len - 1] == 'l' || fo[fl->len - 1] == 'h')
+		{
+			if (fo[fl->len - 1] == 'l' && fo[fl->len] == 'f')
+				return (ft_flagsf(fo, fl));
+			if (fo[fl->len] == 'l' || fo[fl->len] == 'h')
+			{
+				if (fo[fl->len - 1] == 'l' && fo[fl->len] == 'l' && (fo[fl->len + 1] == 'd' || fo[fl->len + 1] == 'i'))
+					return (ft_flagsdi(fo, fl));
+			}
+		}
+	}
 	return (0);
 }
 
