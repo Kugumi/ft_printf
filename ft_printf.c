@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/13 06:11:52 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/13 20:47:51 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,9 @@
 
 int ft_flags(const char *restrict fo, t_flags *fl)
 {
-	int f;
-
-	while (fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'l' && fo[f] != 'h'
-			&& fo[f] != '.' && !(fo[f] >= 49 && fo[f] <= 57))
-	{
-		if (fo[f] == '-')
-			fl->mi = 1;
-		else if (fo[f] == '+')
-		{
-			if ((fl->pl = 1) && !(fl->sp = 0))
-				;
-		}
-		else if (fo[f] == ' ')
-		{
-			if (!(fl->pl))
-				fl->sp = 1;
-		}
-		else if (fo[f] == '0')
-			fl->ze = 1;
-		else
-			return (-1);
-		f++;
-	}
-	return (1);
+	if (fo[fl->len - 1])
+		return (ft_flagsdi(fo, fl));
+	return (0);
 }
 
 void	ft_dispec(t_flags *fl, const char *restrict fo)
