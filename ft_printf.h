@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/16 23:30:00 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/17 14:05:22 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_flags
 	int					ze;
 	int					oc;
 	int					sp;
+	int					width;
 }				t_flags;
 
 typedef struct	s_err

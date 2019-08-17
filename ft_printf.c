@@ -6,82 +6,86 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/16 23:29:57 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/17 14:05:41 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_flags(const char *restrict fo, t_flags *fl)
+int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
 {
-	if (fo[0] == 'l' || fo[0] == 'h' || fo[0] == 'L')
+	if (fo[l - 3] == 'l' || fo[l - 3] == 'h' || fo[l - 3] == 'L')
 	{
-		if (fo[0] == 'L')
+		if (fo[l - 3] == 'L')
 		{
-			if (fo[1] == 'f')
+			if (fo[l - 2] == 'f')
 				return (ft_flagsf(fo, fl));
 			else
 				return (-1);
 		}
-		if (fo[0] == 'l' || fo[0] == 'h')
-		{
-			if (fo[0] == 'l' && fo[1] == 'l')
-			{
-				if ((fo[2] == 'd' || fo[2] == 'i'))
-					return (ft_flagsdi(fo, fl));
-				if (fo[2] == 'u')
-					return (ft_flagsu(fo, fl));
-				if (fo[2] == 'o' || fo[2] == 'x' || fo[2] == 'X')
-					return (ft_flagsoxX(fo, fl));
-				else
-					return (-1);
-			}
-			if (fo[0] == 'h' && fo[1] == 'h')
-			{
-				if ((fo[2] == 'd' || fo[2] == 'i'))
-					return (ft_flagsdi(fo, fl));
-				if (fo[2] == 'u')
-					return (ft_flagsu(fo, fl));
-				if (fo[2] == 'o' || fo[2] == 'x' || fo[2] == 'X')
-					return (ft_flagsoxX(fo, fl));
-				else
-					return (-1);
-			}
-			if (fo[0] == 'h')
-			{
-				if (fo[1] == 'd' || fo[1] == 'i')
-					return (ft_flagsdi(fo, fl));
-				if (fo[1] == 'u')
-					return (ft_flagsu(fo, fl));
-				if (fo[1] == 'o' || fo[1] == 'x' || fo[1] == 'X')
-					return (ft_flagsoxX(fo, fl));
-				else
-					return (-1);
-			}
-			if (fo[0] == 'l')
-			{
-				if (fo[1] == 'd' || fo[1] == 'i')
-					return (ft_flagsdi(fo, fl));
-				if (fo[1] == 'u')
-					return (ft_flagsu(fo, fl));
-				if (fo[1] == 'o' || fo[1] == 'x' || fo[1] == 'X')
-					return (ft_flagsoxX(fo, fl));
-				if (fo[1] == 'f')
-					return (ft_flagsf(fo, fl));
-				else
-					return (-1);
-			}
-		}
+        if (!(l - 3 == 0))
+        {
+            if (fo[l - 4] == 'l' || fo[l - 4] == 'h')
+            {
+                if (fo[l - 4] == 'l' && fo[l - 3] == 'l')
+                {
+                    if ((fo[l - 2] == 'd' || fo[l - 2] == 'i'))
+                        return (ft_flagsdi(fo, fl));
+                    if (fo[l - 2] == 'u')
+                        return (ft_flagsu(fo, fl));
+                    if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
+                        return (ft_flagsoxX(fo, fl));
+                    else
+                        return (-1);
+                }
+                if (fo[l - 4] == 'h' && fo[l - 3] == 'h')
+                {
+                    if ((fo[l - 2] == 'd' || fo[l - 2] == 'i'))
+                        return (ft_flagsdi(fo, fl));
+                    if (fo[l - 2] == 'u')
+                        return (ft_flagsu(fo, fl));
+                    if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
+                        return (ft_flagsoxX(fo, fl));
+                    else
+                        return (-1);
+                }
+                return (-1);
+            }
+        }
+        if (fo[l - 3] == 'h')
+        {
+            if (fo[l - 2] == 'd' || fo[l - 2] == 'i')
+                return (ft_flagsdi(fo, fl));
+            if (fo[l - 2] == 'u')
+                return (ft_flagsu(fo, fl));
+            if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
+                return (ft_flagsoxX(fo, fl));
+            else
+                return (-1);
+        }
+        if (fo[l - 3] == 'l')
+        {
+            if (fo[l - 2] == 'd' || fo[l - 2] == 'i')
+                return (ft_flagsdi(fo, fl));
+            if (fo[l - 2] == 'u')
+                return (ft_flagsu(fo, fl));
+            if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
+                return (ft_flagsoxX(fo, fl));
+            if (fo[l - 2] == 'f')
+                return (ft_flagsf(fo, fl));
+            else
+                return (-1);
+        }
 	}
-	if (fo[0] == 'd' || fo[0] == 'i')
+	if (fo[l - 2] == 'd' || fo[l - 2] == 'i')
 		return (ft_flagsdi(fo, fl));
-	if (fo[0] == 'u')
+	if (fo[l - 2] == 'u')
 		return (ft_flagsu(fo, fl));
-	if (fo[0] == 'o' || fo[0] == 'x' || fo[0] == 'X')
+	if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
 		return (ft_flagsoxX(fo, fl));
-	if (fo[0] == 'f')
+	if (fo[l - 2] == 'f')
 		return (ft_flagsf(fo, fl));
-	if (fo[0] == 'c' || fo[0] == 's' || fo[0] == 'p')
+	if (fo[l - 2] == 'c' || fo[l - 2] == 's' || fo[l - 2] == 'p')
 		return (ft_flagscsp(fo, fl));
 	return (-1);
 }
@@ -101,17 +105,17 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 	f = 1;
 	if (fo[f] == '%')
 		return (0);
-	while (fo[f] != 'c' && fo[f] != 'd' && fo[f] != 'i' /*|| format[f] != 'p' || format[f] != 'o' || format[f] != 'u' || format[f] != 'x' || format[f] !=
-				'X' || format[f] != 'f'*/)
+	while (fo[f] != 'c' && fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'p' && fo[f] != 'o' && fo[f] != 'u' && fo[f] != 'x' && fo[f] !=
+				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0')
 	{
 		ag->len += 1;
 		f++;
 	}
 	f = 1;
-	while (fo[f] != 'c' && fo[f] != 'd' && fo[f] != 'i'/*  || format[f] != 'p' || format[f] != 'o' || format[f] != 'u' || format[f] != 'x' || format[f] !=
-				'X' || format[f] != 'f'*/)
+	while (fo[f] != 'c' && fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'p' && fo[f] != 'o' && fo[f] != 'u' && fo[f] != 'x' && fo[f] !=
+				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0')
 	{
-			if (ft_flags(fo + f, fl) == -1)
+			if (ft_flags(fo + f, fl, ag->len) == -1)
 				return (-1);
 			f += (ag->len - 2);
 	}
@@ -163,5 +167,5 @@ int main(void)
 	int d = 127;
 	int d1 = 0;
 
-	ft_printf("%lc", d);
+	ft_printf("%-0#hh", d);
 }
