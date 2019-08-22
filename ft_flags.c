@@ -32,6 +32,8 @@ int ft_flagsdi(const char *restrict fo, t_flags *fl)
 			return (-1);
 		f++;
 	}
+	if (fo[f] >= 48 && fo[f] <= 57)
+		ft_wdh(fo + f, fl);
 	return (1);
 }
 
@@ -49,6 +51,8 @@ int ft_flagscsp(const char *restrict fo, t_flags *fl)
 			return (-1);
 		f++;
 	}
+	if (fo[f] >= 48 && fo[f] <= 57)
+		ft_wdh(fo + f, fl);
 	return (1);
 }
 
@@ -86,6 +90,8 @@ int ft_flagsf(const char *restrict fo, t_flags *fl)
 			return (-1);
 		f++;
 	}
+	if (fo[f] >= 48 && fo[f] <= 57)
+		ft_wdh(fo + f, fl);
 	return (1);
 }
 
@@ -111,6 +117,8 @@ int ft_flagsu(const char *restrict fo, t_flags *fl)
 			return (-1);
 		f++;
 	}
+	if (fo[f] >= 48 && fo[f] <= 57)
+		ft_wdh(fo + f, fl);
 	return (1);
 }
 
@@ -138,5 +146,7 @@ int ft_flagsoxX(const char *restrict fo, t_flags *fl)
 			return (-1);
 		f++;
 	}
+	if (fo[f] >= 48 && fo[f] <= 57)
+		ft_wdh(fo + f, fl);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/17 14:05:41 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/22 19:15:23 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ int	ft_printf(const char *restrict format, ...)
 	int		f;
 
 	ag = ft_fillta(&ag);
+	fl = ft_filltf(&fl);
 	va_start(ag.args, format);
 	f = 0;
 	while (format[f])
@@ -164,8 +165,8 @@ int	ft_printf(const char *restrict format, ...)
 
 int main(void)
 {
-	int d = 127;
+	int d = 92233720;
 	int d1 = 0;
 
-	ft_printf("%-0#hh", d);
+	ft_printf("%100d", d);
 }

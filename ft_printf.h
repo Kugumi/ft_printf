@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/17 14:05:22 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/22 19:31:44 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_flags
 	int					ze;
 	int					oc;
 	int					sp;
-	int					width;
+	int					wdh;
 }				t_flags;
 
 typedef struct	s_err
@@ -39,7 +39,9 @@ typedef struct	s_err
 	int errf;
 }				t_err;
 
+void			ft_wdh(const char *restrict fo, t_flags *fl);
 t_args			ft_fillta(t_args *ag);
+t_flags			ft_filltf(t_flags *fl);
 int				ft_printf(const char *restrict format, ...);
 int				ft_flagsdi(const char *restrict fo, t_flags *fl);
 int 			ft_flagscsp(const char *restrict fo, t_flags *fl);
