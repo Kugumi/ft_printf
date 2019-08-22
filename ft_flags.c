@@ -9,25 +9,13 @@ int ft_flagsdi(const char *restrict fo, t_flags *fl)
 			&& fo[f] != '.' && !(fo[f] >= 49 && fo[f] <= 57))
 	{
 		if (fo[f] == '-')
-		{
-			if ((fl->mi = 1) && !(fl->ze = 0))
-				;
-		}
+			fl->mi = !(fl->ze = 0) ? 1 : 1;
 		else if (fo[f] == '+')
-		{
-			if ((fl->pl = 1) && !(fl->sp = 0))
-				;
-		}
+			fl->pl = !(fl->sp = 0) ? 1 : 1;
 		else if (fo[f] == ' ')
-		{
-			if (!(fl->pl))
-				fl->sp = 1;
-		}
+			fl->sp = !(fl->pl) ? 1 : 0;
 		else if (fo[f] == '0')
-		{
-			if (!(fl->mi))
-				fl->ze = 1;
-		}
+			fl->ze = !(fl->mi) ? 1 : 0;
 		else
 			return (-1);
 		f++;
@@ -65,25 +53,13 @@ int ft_flagsf(const char *restrict fo, t_flags *fl)
 			!(fo[f] >= 49 && fo[f] <= 57))
 	{
 		if (fo[f] == '-')
-		{
-			if ((fl->mi = 1) && !(fl->ze = 0))
-				;
-		}
+			fl->mi = !(fl->ze = 0) ? 1 : 1;
 		else if (fo[f] == '+')
-		{
-			if ((fl->pl = 1) && !(fl->sp = 0))
-				;
-		}
+			fl->pl = !(fl->sp = 0) ? 1 : 1;
 		else if (fo[f] == ' ')
-		{
-			if (!(fl->pl))
-				fl->sp = 1;
-		}
+			fl->sp = !(fl->pl) ? 1 : 0;
 		else if (fo[f] == '0')
-		{
-			if (!(fl->mi))
-				fl->ze = 1;
-		}
+			fl->ze = !(fl->mi) ? 1 : 0;
 		else if (fo[f] == '#')
 			fl->oc = 1;
 		else
@@ -136,10 +112,7 @@ int ft_flagsoxX(const char *restrict fo, t_flags *fl)
 				;
 		}
 		else if (fo[f] == '0')
-		{
-			if ((!fl->mi))
-				fl->ze = 1;
-		}
+			fl->ze = !(fl->mi) ? 1 : 0;
 		else if (fo[f] == '#')
 			fl->oc = 1;
 		else
