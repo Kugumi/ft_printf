@@ -21,11 +21,24 @@ int ft_flagsdi(const char *restrict fo, t_flags *fl)
 		f++;
 	}
 	if (fo[f] >= 48 && fo[f] <= 57)
+	{
 		ft_wdh(fo + f, fl);
+		while (fo[f] >= 48 && fo[f] <= 57)
+			f++;
+	}
+	if (fo[f] == '.')
+	{
+		ft_psn(fo + f, fl);
+		f++;
+		while (fo[f] >= 48 && fo[f] <= 57)
+			f++;
+	}
+	if (fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'l' && fo[f] != 'h')
+		return (-1);
 	return (1);
 }
 
-int ft_flagscsp(const char *restrict fo, t_flags *fl)
+int ft_flagscsp(const char *restrict fo, t_flags *fl, unsigned long long l)
 {
 	int f;
 
@@ -40,7 +53,20 @@ int ft_flagscsp(const char *restrict fo, t_flags *fl)
 		f++;
 	}
 	if (fo[f] >= 48 && fo[f] <= 57)
+	{
 		ft_wdh(fo + f, fl);
+		while (fo[f] >= 48 && fo[f] <= 57)
+			f++;
+	}
+	if (fo[f] == '.' && fo[l - 2] == 's')
+	{
+		ft_psn(fo + f, fl);
+		f++;
+		while (fo[f] >= 48 && fo[f] <= 57)
+			f++;
+	}
+	if (fo[f] != 'c' && fo[f] != 's' && fo[f] != 'p')
+		return (-1);
 	return (1);
 }
 
@@ -67,7 +93,20 @@ int ft_flagsf(const char *restrict fo, t_flags *fl)
 		f++;
 	}
 	if (fo[f] >= 48 && fo[f] <= 57)
+	{
 		ft_wdh(fo + f, fl);
+		while (fo[f] >= 48 && fo[f] <= 57)
+			f++;
+	}
+	if (fo[f] == '.')
+	{
+		ft_psn(fo + f, fl);
+		f++;
+		while (fo[f] >= 48 && fo[f] <= 57)
+			f++;
+	}
+	if (fo[f] != 'f' && fo[f] != 'l' && fo[f] != 'L')
+		return (-1);
 	return (1);
 }
 
@@ -94,7 +133,20 @@ int ft_flagsu(const char *restrict fo, t_flags *fl)
 		f++;
 	}
 	if (fo[f] >= 48 && fo[f] <= 57)
+	{
 		ft_wdh(fo + f, fl);
+		while (fo[f] >= 48 && fo[f] <= 57)
+			f++;
+	}
+	if (fo[f] == '.')
+	{
+		ft_psn(fo + f, fl);
+		f++;
+		while (fo[f] >= 48 && fo[f] <= 57)
+			f++;
+	}
+	if (fo[f] != 'u' && fo[f] != 'l' && fo[f] != 'h')
+		return (-1);
 	return (1);
 }
 
@@ -120,6 +172,20 @@ int ft_flagsoxX(const char *restrict fo, t_flags *fl)
 		f++;
 	}
 	if (fo[f] >= 48 && fo[f] <= 57)
+	{
 		ft_wdh(fo + f, fl);
+		while (fo[f] >= 48 && fo[f] <= 57)
+			f++;
+	}
+	if (fo[f] == '.')
+	{
+		ft_psn(fo + f, fl);
+		f++;
+		while (fo[f] >= 48 && fo[f] <= 57)
+			f++;
+	}
+	if (fo[f] != 'o' && fo[f] != 'x' && fo[f] != 'X' && fo[f] != 'h' &&
+			fo[f] != 'l')
+		return (-1);
 	return (1);
 }

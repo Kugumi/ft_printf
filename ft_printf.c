@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/22 19:15:23 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/23 03:01:08 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
 	if (fo[l - 2] == 'f')
 		return (ft_flagsf(fo, fl));
 	if (fo[l - 2] == 'c' || fo[l - 2] == 's' || fo[l - 2] == 'p')
-		return (ft_flagscsp(fo, fl));
+		return (ft_flagscsp(fo, fl, l));
 	return (-1);
 }
 
@@ -168,5 +168,5 @@ int main(void)
 	int d = 92233720;
 	int d1 = 0;
 
-	ft_printf("%100d", d);
+	ft_printf("%100.16d", d);
 }
