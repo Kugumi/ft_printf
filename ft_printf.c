@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/23 03:01:08 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/25 01:31:49 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 	}
 	if (fo[f] == 'd' || fo[f] == 'i')
 		ft_dispec(ag, fo + f);
+	if (fo[f] == 'c')
+		ft_cspec(ag, fo + f);
 	return (1);
 }
 
@@ -166,7 +168,8 @@ int	ft_printf(const char *restrict format, ...)
 int main(void)
 {
 	int d = 92233720;
+	char c = 'h';
 	int d1 = 0;
 
-	ft_printf("%100.16d", d);
+	ft_printf("%c", c);
 }

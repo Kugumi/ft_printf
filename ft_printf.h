@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/23 03:00:08 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/25 01:31:46 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ typedef struct	s_err
 	int errf;
 }				t_err;
 
-int			ft_psn(const char *restrict fo, t_flags *fl);
+void			ft_cspec(t_args *ag, const char *restrict fo);
+int				ft_psn(const char *restrict fo, t_flags *fl);
 void			ft_wdh(const char *restrict fo, t_flags *fl);
 t_args			ft_fillta(t_args *ag);
 t_flags			ft_filltf(t_flags *fl);

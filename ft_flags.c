@@ -28,6 +28,7 @@ int ft_flagsdi(const char *restrict fo, t_flags *fl)
 	}
 	if (fo[f] == '.')
 	{
+		fl->ze = 0;
 		ft_psn(fo + f, fl);
 		f++;
 		while (fo[f] >= 48 && fo[f] <= 57)
@@ -140,6 +141,7 @@ int ft_flagsu(const char *restrict fo, t_flags *fl)
 	}
 	if (fo[f] == '.')
 	{
+		fl->ze = 0;
 		ft_psn(fo + f, fl);
 		f++;
 		while (fo[f] >= 48 && fo[f] <= 57)
@@ -179,6 +181,7 @@ int ft_flagsoxX(const char *restrict fo, t_flags *fl)
 	}
 	if (fo[f] == '.')
 	{
+		fl->ze = 0;
 		ft_psn(fo + f, fl);
 		f++;
 		while (fo[f] >= 48 && fo[f] <= 57)
