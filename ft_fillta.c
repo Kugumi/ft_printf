@@ -16,6 +16,7 @@ t_flags	ft_filltf(t_flags *fl)
     fl->sp = 0;
     fl->wdh = 0;
 	fl->psn = -1;
+	fl->lnh = 0;
 	return (*fl);
 }
 
@@ -58,4 +59,5 @@ int	ft_psn(const char *restrict fo, t_flags *fl)
 		buff[i] = '\0';
 	}
 	fl->psn = ft_atoi(buff);
+	return (1);
 }

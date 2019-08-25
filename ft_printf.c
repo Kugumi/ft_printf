@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/25 01:31:49 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/25 03:30:14 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
 		if (fo[l - 3] == 'L')
 		{
 			if (fo[l - 2] == 'f')
+			{
+				fl->lnh = 5;
 				return (ft_flagsf(fo, fl));
+			}
 			else
 				return (-1);
 		}
@@ -29,6 +32,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
             {
                 if (fo[l - 4] == 'l' && fo[l - 3] == 'l')
                 {
+					fl->lnh = 2;
                     if ((fo[l - 2] == 'd' || fo[l - 2] == 'i'))
                         return (ft_flagsdi(fo, fl));
                     if (fo[l - 2] == 'u')
@@ -40,6 +44,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
                 }
                 if (fo[l - 4] == 'h' && fo[l - 3] == 'h')
                 {
+					fl->lnh = 4;
                     if ((fo[l - 2] == 'd' || fo[l - 2] == 'i'))
                         return (ft_flagsdi(fo, fl));
                     if (fo[l - 2] == 'u')
@@ -54,6 +59,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
         }
         if (fo[l - 3] == 'h')
         {
+			fl->lnh = 3;
             if (fo[l - 2] == 'd' || fo[l - 2] == 'i')
                 return (ft_flagsdi(fo, fl));
             if (fo[l - 2] == 'u')
@@ -65,6 +71,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
         }
         if (fo[l - 3] == 'l')
         {
+			fl->lnh = 1;
             if (fo[l - 2] == 'd' || fo[l - 2] == 'i')
                 return (ft_flagsdi(fo, fl));
             if (fo[l - 2] == 'u')
