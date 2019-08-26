@@ -6,11 +6,12 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/25 17:47:36 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/26 19:02:58 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
 {
@@ -177,6 +178,7 @@ int main(void)
 	int d = 92233720;
 	char c = 'h';
 	int d1 = 0;
-
-	ft_printf("%d", d);
+//
+//	ft_printf("%%%-+++++++++++++++---------------0000000          100.lld", d);
+//	printf("%d - %u\n", -2147483648, -2147483648);
 }
