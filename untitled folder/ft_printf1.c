@@ -38,12 +38,21 @@ void ft_printf(char *str, ...)
                 ft_putchar((char)(va_arg(ap, int)));
             else if (str[i] == 'd' || str[i] == 'i')
                 ft_putstr(ft_itoa(va_arg(ap, long int)));
-            else if (str[i] == '#' && (str[i + 1] == 'x' || str[i + 1] == 'X'))
+            else if (str[i] == 'l' && str[i + 1] == 'l' && str[i + 2] == 'u')
+            {
+                ft_putstr(ft_itoa_unsigned((va_arg(ap, unsigned long long int))));
+                i += 2;
+            }
+            else if (str[i] == 'x' || str[i] == 'X')
             {
                 //str[i + 1] == 'x' ? ft_putstr("0x") : ft_putstr("0X");
                 str[i + 1] == 'x' ? ft_putstr(ft_itoa_base(va_arg(ap, long long int), "0123456789abcdef")) :
                     ft_putstr(ft_itoa_base(va_arg(ap, long long int), "0123456789ABCDEF"));
-                i++;
+            }
+            else if (str[i] == 'o')
+            {
+                //str[i + 1] == 'x' ? ft_putstr(ft_itoa_base(va_arg(ap, long long int), "01234567")) :
+                ft_putstr(ft_itoa_base(va_arg(ap, unsigned int), "01234567"));
             }
         }
         else
@@ -55,10 +64,11 @@ void ft_printf(char *str, ...)
 
 int     main(int arg, char **argv)
 {
-    int x;
-
-    x = 34345;
-    ft_printf("d = %d\ns = %s\nc = %c\nx = %#x\nX = %#X\n\n\n", x, "Hello", 'R', -255, 255);
-    printf("d = %d\ns = %s\nc = %c\nx = %u\nX = %o\n", x, "Hello", 'R', -255, 255);
+    int x = -255;
+    unsigned long long int ll = -255;
+    
+    ft_printf("d = %d\ns = %s\nc = %c\nx = %x\nX = %X\no = %o\nll = %llu\n\n", x, "Hello", 'R', -255, -255, 255, ll);
+       printf("d = %d\ns = %s\nc = %c\nx = %x\nX = %X\no = %o\nll = %llu\n\n", x, "Hello", 'R', -255, -255, 255, ll);
+    printf("%020d|", 100);
     return (0);
 }

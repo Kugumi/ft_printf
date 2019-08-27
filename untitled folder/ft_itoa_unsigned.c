@@ -12,29 +12,13 @@
 
 #include "ft_printf.h"
 
-int		ft_lennbr_base(unsigned long long int n, int x)
+char  *ft_itoa_unsigned(long long int n)
 {
-	int	len;
+  int                      i;
+  unsigned long long int   nbr;
+  char                      *t;
 
-	len = 0;
-	while (n != 0)
-	{
-		n = n / x;
-		len++;
-	}
-	return (len);
-}
-
-
-char *ft_itoa_base(long long int n, char *base)
-{
-  int                     i;
-  unsigned long long int  nbr;
-  char                    *t;
-  int                     x;
-
-  x = ft_strlen(base);
-  i = (n > 0) ? ft_lennbr_base(n, x) : ft_lennbr_base((long long int )n, x) + 1;
+  i = ft_lennbr_base((unsigned long long int)n, 10);
   t = (char *)malloc(sizeof(char) * i + 1);
   if (t == NULL)
     return (0);
@@ -42,27 +26,12 @@ char *ft_itoa_base(long long int n, char *base)
     return (ft_strcpy(t, "-2147483648"));
   t[i] = '\0';
   i--;
-  nbr = (n < 0) ? (unsigned long long int)n : n;
+  nbr = (unsigned long long)n;
   while (i >= 0)
-  {
-    t[i] = base[nbr % x];
-    nbr = nbr / x;
-    i--;
-  }
-  if (n < 0 && x == 16)
-  {
-    t[0] = 'f';
-    printf("||");
-  }
-  else if (n < 0 && x == 8)
-  {
-    t[0] = '0';
-    printf("||");
-  }
-  else if (n < 0 && x == 10)
-  {
-    t[0] = '-';
-    printf("||");
-  }
+    {
+      t[i] = (nbr % 10 + '0');
+      nbr = (nbr / 10);
+      i--;
+    }
   return (t);
 }
