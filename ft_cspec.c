@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void	ft_cspec(t_args *ag, t_flags *fl, const char *restrict fo)
+void	ft_cspec(t_args *ag, t_flags *fl)
 {
 	char c;
 

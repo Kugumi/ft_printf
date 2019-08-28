@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/27 18:25:12 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/28 23:50:32 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
 {
-	if (fo[l - 3] == 'l' || fo[l - 3] == 'h' || fo[l - 3] == 'L')
+    if (!(l - 2 == 0))
+        if (fo[l - 2] == '%')
+            return (ft_flagsproc(fo, fl));
+    if (fo[l - 3] == 'l' || fo[l - 3] == 'h' || fo[l - 3] == 'L')
 	{
 		if (fo[l - 3] == 'L')
 		{
@@ -98,7 +101,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
 	return (-1);
 }
 
-size_t	ft_dispec(t_args *ag, t_flags *fl, const char *restrict fo)
+char	*ft_dispec(t_args *ag, t_flags *fl)
 {
 	/*if (!fl->lnh)
 		return (ft_itoa(p, va_arg(ag->args, int)));
@@ -111,7 +114,8 @@ size_t	ft_dispec(t_args *ag, t_flags *fl, const char *restrict fo)
 	else if (fl->lnh == 3)
 		return (ft_itoa(p, (short)va_arg(ag->args, int)));*/
 //	fl->re += ft_putstr(ft_itoa(l));
-}	
+	return (0);
+}
 
 int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 {
@@ -122,23 +126,25 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 		return (0);
 	ag->len = 2;
 	while (fo[f] != 'c' && fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'p' && fo[f] != 'o' && fo[f] != 'u' && fo[f] != 'x' && fo[f] !=
-				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0')
+				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0' && fo[f] != '%')
 	{
 		ag->len += 1;
 		f++;
 	}
 	f = 1;
 	while (fo[f] != 'c' && fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'p' && fo[f] != 'o' && fo[f] != 'u' && fo[f] != 'x' && fo[f] !=
-				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0')
+				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0' && fo[f] != '%')
 	{
 			if (ft_flags(fo + f, fl, ag->len) == -1)
 				return (-1);
 			f += (ag->len - 2);
 	}
 	if (fo[f] == 'd' || fo[f] == 'i')
-		ft_dispec(ag, fl, fo + f);
+		ft_dispec(ag, fl);
 	if (fo[f] == 'c')
-		ft_cspec(ag, fl, fo + f);
+		ft_cspec(ag, fl);
+	if (fo[f] == '%')
+	    ft_procspec(fl);
 	return (1);
 }
 
@@ -177,11 +183,10 @@ int	ft_printf(const char *restrict format, ...)
 		f++;
 	}
 	va_end(ag.args);
-	printf("\n%d\n", fl.re);
 	return (fl.re);
 }
 
-int main(void)
+/*int main(void)
 {
 	int d = -92233720;
 	char c = 'h';
@@ -189,8 +194,8 @@ int main(void)
 	long long int ll = -15;
 	long int l = 9223372036854775808;
 
-	ft_printf("%020.lld", l);
+	ft_printf("%5%");
 	write(1, "\n", 1);
-	printf("\n%d", printf("%020.lld", l));
+	printf("\n%d", printf("%5%"));
 	return (0);
-}
+}*/
