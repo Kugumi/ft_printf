@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/26 19:02:58 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/27 18:25:12 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,19 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
 	return (-1);
 }
 
-void	ft_dispec(t_args *ag, const char *restrict fo)
+size_t	ft_dispec(t_args *ag, t_flags *fl, const char *restrict fo)
 {
-	int l;
-
-	l = va_arg(ag->args, int);
-	ag->re += ft_putstr(ft_itoa(l));
+	/*if (!fl->lnh)
+		return (ft_itoa(p, va_arg(ag->args, int)));
+	else */if (fl->lnh == 2)
+		return (ft_itoa_base(fl, va_arg(ag->args, long long int), "0123456789"));
+	/*else if (fl->lnh == 1)
+		return (ft_itoa(p, va_arg(ag->args, long int)));
+	else if (fl->lnh == 4)
+		return (ft_itoa(p, (char)va_arg(ag->args, unsigned int)));
+	else if (fl->lnh == 3)
+		return (ft_itoa(p, (short)va_arg(ag->args, int)));*/
+//	fl->re += ft_putstr(ft_itoa(l));
 }
 
 int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
@@ -113,6 +120,7 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 	f = 1;
 	if (fo[f] == '%')
 		return (0);
+	ag->len = 2;
 	while (fo[f] != 'c' && fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'p' && fo[f] != 'o' && fo[f] != 'u' && fo[f] != 'x' && fo[f] !=
 				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0')
 	{
@@ -128,9 +136,9 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 			f += (ag->len - 2);
 	}
 	if (fo[f] == 'd' || fo[f] == 'i')
-		ft_dispec(ag, fo + f);
+		ft_dispec(ag, fl, fo + f);
 	if (fo[f] == 'c')
-		ft_cspec(ag, fo + f);
+		ft_cspec(ag, fl, fo + f);
 	return (1);
 }
 
@@ -141,7 +149,6 @@ int	ft_printf(const char *restrict format, ...)
 	t_flags	fl;
 	int		f;
 
-	ag = ft_fillta(&ag);
 	fl = ft_filltf(&fl);
 	va_start(ag.args, format);
 	f = 0;
@@ -152,7 +159,7 @@ int	ft_printf(const char *restrict format, ...)
 			if ((err.errf = ft_spec(format + f, &ag, &fl)) == 0)
 			{
 				write(1, "%", 1);
-				ag.re += 1;
+				fl.re += 1;
 				f += 2;
 			}
 			else if (err.errf == -1)
@@ -166,19 +173,21 @@ int	ft_printf(const char *restrict format, ...)
 		if (!format[f])
 			break ;
 		write(1, &format[f], 1);
-		ag.re += 1;
+		fl.re += 1;
 		f++;
 	}
 	va_end(ag.args);
-	return (ag.re);
+	printf("\n%d\n", fl.re);
+	return (fl.re);
 }
 
 int main(void)
 {
-	int d = 92233720;
+	int d = -92233720;
 	char c = 'h';
 	int d1 = 0;
 
-	ft_printf("%%%-+++++++++++++++---------------0000000          100d", d);
-//	printf("%d - %u\n", -2147483648, -2147483648);
+	ft_printf("%020.lld", 15);
+	write(1, "\n", 1);
+	printf("\n%d", printf("%020.lld", 15));
 }

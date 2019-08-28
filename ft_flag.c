@@ -6,16 +6,119 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 21:38:30 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/26 22:01:50 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/28 05:55:00 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_wdh(const char *restrict fo, t_flags *fl)
+void ft_flagmi(t_flags *fl, long long int num, int r)
 {
+	if (fl->mi)
+	{
+		if (fl->pl)
+		{
+			if (num >= 0)
+			{
+				write(1, "+", 1);
+				fl->wdh -= 1;
+				fl->re += 1;
+			}
+			else
+			{
+				write(1, "-", 1);
+				fl->wdh -= 1;
+				fl->re += 1;
+			}
+		}
+		else if (fl->sp && num >= 0)
+		{
+			write(1, " ", 1);
+			fl->wdh -= 1;
+			fl->re += 1;
+		}
+		if (fl->psn > 0)
+		{
+			if (r < fl->psn)
+			{
+				fl->psn -= r;
+				while(fl->psn)
+				{
+					write(1, "0", 1);
+					fl->psn -= 1;
+					fl->wdh -= 1;
+					fl->re += 1;
+				}
+			}
+		}
+/*  	if (fl->wdh > r)
+		{
+			fl->wdh -= r;
+			while (fl->wdh)
+			{
+				write(1, " ", 1);
+				fl->wdh -= 1;
+				fl->re += 1;
+			}
+		}*/
+	}
+}
+
+void ft_flag(t_flags *fl, long long int num, int r)
+{
+	char *buff;
 	int i;
 
 	i = 0;
-	
+	buff = (char *)malloc(sizeof(char));
+	buff[i] = '\0';
+	if (fl->pl)
+	{
+		if (num >= 0)
+		{
+			buff = ft_strjoin(buff, "+");
+			fl->wdh -= 1;
+			fl->re += 1;
+		}
+		else
+		{
+			buff = ft_strjoin(buff, "-");
+			fl->wdh -= 1;
+			fl->re += 1;
+		}
+	}
+	else if (fl->sp && num >= 0)
+	{
+		buff = ft_strjoin(buff, " ");
+		fl->wdh -= 1;
+		fl->re += 1;
+	}
+	if (fl->psn > 0)
+	{
+		if (r < fl->psn)
+		{
+			fl->psn -= r;
+			while (fl->psn)
+			{
+				buff = ft_strjoin(buff, "0");
+				fl->psn -= 1;
+				fl->wdh -= 1;
+				fl->re += 1;
+			}
+		}
+	}
+	if (fl->wdh > r)
+	{
+		fl->wdh -= r;
+		while (fl->wdh) {
+			if (fl->ze)
+				buff = ft_strjoin(buff, "0");
+			else
+				buff = ft_strjoin(buff, " ");
+			fl->wdh -= 1;
+			fl->re += 1;
+		}
+	}
+	while(buff[i] != '\0')
+		write(1, &buff[i++], 1);
 }

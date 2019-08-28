@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/25 03:17:49 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/28 00:49:32 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include "libft/libft.h"
+# include <string.h>
 
 typedef struct	s_args
 {
 	unsigned long long	len;
-	int					re;
 	va_list				args;
 }				t_args;
 
@@ -34,6 +35,8 @@ typedef struct	s_flags
 	int					wdh;
 	int					psn;
 	int					lnh;
+	int					sign;
+	int                 re;
 }				t_flags;
 
 typedef struct	s_err
@@ -41,7 +44,10 @@ typedef struct	s_err
 	int errf;
 }				t_err;
 
-void			ft_cspec(t_args *ag, const char *restrict fo);
+void            ft_flag(t_flags *fl, long long int num, int r);
+void            ft_flagmi(t_flags *fl, long long int num, int r);
+char            *ft_itoa_base(t_flags *fl, long long int n, char *base);
+void			ft_cspec(t_args *ag, t_flags *fl, const char *restrict fo);
 int				ft_psn(const char *restrict fo, t_flags *fl);
 void			ft_wdh(const char *restrict fo, t_flags *fl);
 t_args			ft_fillta(t_args *ag);

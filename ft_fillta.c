@@ -1,12 +1,5 @@
 #include "ft_printf.h"
 
-t_args ft_fillta(t_args *ag)
-{
-	ag->re = 0;
-	ag->len = 2;
-	return (*ag);
-}
-
 t_flags	ft_filltf(t_flags *fl)
 {
     fl->mi = 0;
@@ -17,6 +10,7 @@ t_flags	ft_filltf(t_flags *fl)
     fl->wdh = 0;
 	fl->psn = -1;
 	fl->lnh = 0;
+	fl->re = 0;
 	return (*fl);
 }
 
