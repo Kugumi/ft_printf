@@ -111,7 +111,7 @@ size_t	ft_dispec(t_args *ag, t_flags *fl, const char *restrict fo)
 	else if (fl->lnh == 3)
 		return (ft_itoa(p, (short)va_arg(ag->args, int)));*/
 //	fl->re += ft_putstr(ft_itoa(l));
-}
+}	
 
 int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 {
@@ -186,8 +186,11 @@ int main(void)
 	int d = -92233720;
 	char c = 'h';
 	int d1 = 0;
+	long long int ll = -15;
+	long int l = 9223372036854775808;
 
-	ft_printf("%020.lld", 15);
+	ft_printf("%020.lld", l);
 	write(1, "\n", 1);
-	printf("\n%d", printf("%020.lld", 15));
+	printf("\n%d", printf("%020.lld", l));
+	return (0);
 }
