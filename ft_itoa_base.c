@@ -6,7 +6,7 @@
 /*   By: kdeloise <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 23:02:07 by kdeloise          #+#    #+#             */
-/*   Updated: 2019/08/28 06:37:53 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/29 19:44:44 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char *ft_itoa_base(t_flags *fl, long long int n, char *base)
 	int                     r;
 
 	x = ft_strlen(base);
-	i = (n > 0) ? ft_lennbr_base(n, x) : ft_lennbr_base(n, x) + 1;
+	i = (n > 0) ? ft_lennbr_base(n, x) : ft_lennbr_base(n, x);
 	fl->re += i;
 	r = i;
     if (!fl->mi)
@@ -49,7 +49,7 @@ char *ft_itoa_base(t_flags *fl, long long int n, char *base)
 	t[i] = '\0';
 	i--;
 	nbr = (n < 0 && (x == 16 || x == 8)) ? (unsigned long long int)n : n;
-	nbr = (n < 0 && x == 10) ? (n * -1) : n; 
+	nbr = (n < 0 && x == 10) ? (n * -1) : n;
 	while (i >= 0)
 	{
 		t[i] = base[nbr % x];
@@ -58,10 +58,10 @@ char *ft_itoa_base(t_flags *fl, long long int n, char *base)
 	}
 	// if (n < 0 && x == 10)
 	// 	t[0] = '-';
-	if (n < 0 && x == 10)
+	/*  if (n < 0 && x == 10)
 		ft_putstr(t + 1);
-	else
-		ft_putstr(t);
+	else*/
+	ft_putstr(t);
 	if (fl->mi)
 	{
         if (fl->wdh > r)

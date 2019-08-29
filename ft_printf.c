@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/28 23:50:32 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/29 19:45:21 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
 
 char	*ft_dispec(t_args *ag, t_flags *fl)
 {
-	/*if (!fl->lnh)
-		return (ft_itoa(p, va_arg(ag->args, int)));
-	else */if (fl->lnh == 2)
+	if (!fl->lnh)
+		return (ft_itoa_base(fl, va_arg(ag->args, int), "0123456789"));
+	else if (fl->lnh == 2)
 		return (ft_itoa_base(fl, va_arg(ag->args, long long int), "0123456789"));
 	else if (fl->lnh == 1)
 		return (ft_itoa_base(fl, va_arg(ag->args, long int), "0123456789"));
@@ -124,7 +124,6 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 	f = 1;
 	if (fo[f] == '%')
 		return (0);
-	fl = ft_filltf(fl);
 	ag->len = 2;
 	while (fo[f] != 'c' && fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'p' && fo[f] != 'o' && fo[f] != 'u' && fo[f] != 'x' && fo[f] !=
 				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0' && fo[f] != '%')
@@ -158,10 +157,12 @@ int	ft_printf(const char *restrict format, ...)
 
 	va_start(ag.args, format);
 	f = 0;
+	fl.re = 0;
 	while (format[f])
 	{
 		while (format[f] == '%')
 		{
+			fl = ft_filltf(&fl);
 			if ((err.errf = ft_spec(format + f, &ag, &fl)) == 0)
 			{
 				write(1, "%", 1);
@@ -186,7 +187,7 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-int main(void)
+/*  int main(void)
 {
 	int d = -92233720;
 	char c = 'h';
@@ -200,4 +201,4 @@ int main(void)
 	printf ("%    +0-15.17hd, %hd, %hd\n", -15, ll, -15);
 	ft_printf ("%    +0-15.17hd, %hd, %hd\n", -15, ll, -15);
 	return (0);
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/28 23:19:57 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/29 18:38:20 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void			ft_procspec(t_flags *fl);
 int				ft_psn(const char *restrict fo, t_flags *fl);
 void			ft_wdh(const char *restrict fo, t_flags *fl);
 t_args			ft_fillta(t_args *ag);
-t_flags			*ft_filltf(t_flags *fl);
+t_flags			ft_filltf(t_flags *fl);
 int				ft_printf(const char *restrict format, ...);
 int				ft_flagsproc(const char *restrict fo, t_flags *fl);
 int				ft_flagsdi(const char *restrict fo, t_flags *fl);
