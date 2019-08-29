@@ -107,12 +107,12 @@ char	*ft_dispec(t_args *ag, t_flags *fl)
 		return (ft_itoa(p, va_arg(ag->args, int)));
 	else */if (fl->lnh == 2)
 		return (ft_itoa_base(fl, va_arg(ag->args, long long int), "0123456789"));
-	/*else if (fl->lnh == 1)
-		return (ft_itoa(p, va_arg(ag->args, long int)));
+	else if (fl->lnh == 1)
+		return (ft_itoa_base(fl, va_arg(ag->args, long int), "0123456789"));
 	else if (fl->lnh == 4)
-		return (ft_itoa(p, (char)va_arg(ag->args, unsigned int)));
+		return (ft_itoa_base(fl, (char)va_arg(ag->args, unsigned int), "0123456789"));
 	else if (fl->lnh == 3)
-		return (ft_itoa(p, (short)va_arg(ag->args, int)));*/
+		return (ft_itoa_base(fl, (short)va_arg(ag->args, int), "0123456789"));
 //	fl->re += ft_putstr(ft_itoa(l));
 	return (0);
 }
@@ -124,6 +124,7 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 	f = 1;
 	if (fo[f] == '%')
 		return (0);
+	fl = ft_filltf(fl);
 	ag->len = 2;
 	while (fo[f] != 'c' && fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'p' && fo[f] != 'o' && fo[f] != 'u' && fo[f] != 'x' && fo[f] !=
 				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0' && fo[f] != '%')
@@ -155,7 +156,6 @@ int	ft_printf(const char *restrict format, ...)
 	t_flags	fl;
 	int		f;
 
-	fl = ft_filltf(&fl);
 	va_start(ag.args, format);
 	f = 0;
 	while (format[f])
@@ -186,16 +186,18 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-/*int main(void)
+int main(void)
 {
 	int d = -92233720;
 	char c = 'h';
 	int d1 = 0;
-	long long int ll = -15;
-	long int l = 9223372036854775808;
+	int ll = 32767;
+	// long int l = 92;
 
-	ft_printf("%5%");
-	write(1, "\n", 1);
-	printf("\n%d", printf("%5%"));
+	// ft_printf("%5%");
+	// write(1, "\n", 1);
+	// printf("\n%d", printf("%5%"));
+	printf ("%    +0-15.17hd, %hd, %hd\n", -15, ll, -15);
+	ft_printf ("%    +0-15.17hd, %hd, %hd\n", -15, ll, -15);
 	return (0);
-}*/
+}

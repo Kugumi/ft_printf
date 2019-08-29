@@ -56,9 +56,12 @@ char *ft_itoa_base(t_flags *fl, long long int n, char *base)
 		nbr = nbr / x;
 		i--;
 	}
+	// if (n < 0 && x == 10)
+	// 	t[0] = '-';
 	if (n < 0 && x == 10)
-		t[0] = '-';
-	ft_putstr(t);
+		ft_putstr(t + 1);
+	else
+		ft_putstr(t);
 	if (fl->mi)
 	{
         if (fl->wdh > r)

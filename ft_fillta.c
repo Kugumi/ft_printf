@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-t_flags	ft_filltf(t_flags *fl)
+t_flags	*ft_filltf(t_flags *fl)
 {
     fl->mi = 0;
     fl->pl = 0;
@@ -11,7 +11,7 @@ t_flags	ft_filltf(t_flags *fl)
 	fl->psn = -1;
 	fl->lnh = 0;
 	fl->re = 0;
-	return (*fl);
+	return (fl);
 }
 
 void	ft_wdh(const char *restrict fo, t_flags *fl)

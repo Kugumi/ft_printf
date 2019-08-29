@@ -27,16 +27,16 @@ typedef struct	s_args
 
 typedef struct	s_flags
 {
-	int					mi;
-	int					pl;
-	int					ze;
-	int					oc;
-	int					sp;
-	int					wdh;
-	int					psn;
-	int					lnh;
-	int					sign;
-	int                 re;
+	int					mi;   //минус
+	int					pl;   //plus
+	int					ze;   //zero
+	int					oc;   //#
+	int					sp;   // ' '
+	int					wdh;  //width
+	int					psn;  //persision
+	int					lnh;  //lengh
+	int					sign; // ??
+	int                 re;   //return value
 }				t_flags;
 
 typedef struct	s_err
@@ -52,7 +52,7 @@ void			ft_procspec(t_flags *fl);
 int				ft_psn(const char *restrict fo, t_flags *fl);
 void			ft_wdh(const char *restrict fo, t_flags *fl);
 t_args			ft_fillta(t_args *ag);
-t_flags			ft_filltf(t_flags *fl);
+t_flags			*ft_filltf(t_flags *fl);
 int				ft_printf(const char *restrict format, ...);
 int				ft_flagsproc(const char *restrict fo, t_flags *fl);
 int				ft_flagsdi(const char *restrict fo, t_flags *fl);

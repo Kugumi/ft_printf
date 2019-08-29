@@ -37,6 +37,12 @@ void ft_flagmi(t_flags *fl, long long int num, int r)
 			fl->wdh -= 1;
 			fl->re += 1;
 		}
+		if (num < 0 && !fl->pl)
+		{
+			write(1, "-", 1);
+			fl->wdh -= 1;
+			fl->re += 1;
+		}
 		if (fl->psn > 0)
 		{
 			if (r < fl->psn)
@@ -90,6 +96,12 @@ void ft_flag(t_flags *fl, long long int num, int r)
 	else if (fl->sp && num >= 0)
 	{
 		buff = ft_strjoin(buff, " ");
+		fl->wdh -= 1;
+		fl->re += 1;
+	}
+	if (num < 0 && !fl->pl)
+	{
+		buff = ft_strjoin(buff, "-");
 		fl->wdh -= 1;
 		fl->re += 1;
 	}
