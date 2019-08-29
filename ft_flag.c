@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 21:38:30 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/28 05:55:00 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/29 20:10:14 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void ft_flagmi(t_flags *fl, long long int num, int r)
 			fl->wdh -= 1;
 			fl->re += 1;
 		}
+        if (num == 0 && fl->psn == 0)
+            fl->nn = 1;
 		if (fl->psn > 0)
 		{
 			if (r < fl->psn)
@@ -105,11 +107,13 @@ void ft_flag(t_flags *fl, long long int num, int r)
 		fl->wdh -= 1;
 		fl->re += 1;
 	}
+	if (num == 0 && fl->psn == 0)
+	    fl->nn = 1;
 	if (fl->psn > 0)
 	{
 		if (r < fl->psn)
 		{
-			fl->psn -= r;
+		    fl->psn -= r;
 			while (fl->psn)
 			{
 				buff = ft_strjoin(buff, "0");
@@ -121,12 +125,14 @@ void ft_flag(t_flags *fl, long long int num, int r)
 	}
 	if (fl->wdh > r)
 	{
-		fl->wdh -= r;
-		while (fl->wdh) {
+        if (!fl->nn)
+		    fl->wdh -= r;
+		while (fl->wdh)
+		{
 			if (fl->ze)
 				buff = ft_strjoin(buff, "0");
 			else
-				buff = ft_strjoin(buff, " ");
+				buff = ft_strjoin(" ", buff);
 			fl->wdh -= 1;
 			fl->re += 1;
 		}

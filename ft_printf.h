@@ -35,8 +35,9 @@ typedef struct	s_flags
 	int					wdh;  //width
 	int					psn;  //persision
 	int					lnh;  //lengh
-	int					sign; // ??
+//	int					sign; // ??
 	int                 re;   //return value
+	int					nn;   // 0 with 0 psn
 }				t_flags;
 
 typedef struct	s_err

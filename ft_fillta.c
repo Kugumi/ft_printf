@@ -10,7 +10,7 @@ t_flags	ft_filltf(t_flags *fl)
     fl->wdh = 0;
 	fl->psn = -1;
 	fl->lnh = 0;
-	fl->re = 0;
+	fl->nn = 0;
 	return (*fl);
 }
 

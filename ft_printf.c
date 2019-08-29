@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/29 19:45:21 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/29 19:53:49 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-/*  int main(void)
+/*int main(void)
 {
 	int d = -92233720;
 	char c = 'h';
@@ -198,7 +198,7 @@ int	ft_printf(const char *restrict format, ...)
 	// ft_printf("%5%");
 	// write(1, "\n", 1);
 	// printf("\n%d", printf("%5%"));
-	printf ("%    +0-15.17hd, %hd, %hd\n", -15, ll, -15);
-	ft_printf ("%    +0-15.17hd, %hd, %hd\n", -15, ll, -15);
+	printf ("@moulitest: %.d %.0d", 0, 0);
+	ft_printf ("@moulitest: %.d %.0d", 0, 0);
 	return (0);
 }*/
