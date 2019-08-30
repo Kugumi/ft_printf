@@ -46,9 +46,12 @@ typedef struct	s_err
 }				t_err;
 
 void            ft_flag(t_flags *fl, long long int num, int r);
+void            ft_flagstr(t_flags *fl, char *str);
 void            ft_flagmi(t_flags *fl, long long int num, int r);
+int				ft_flagstrmi(t_flags *fl, char *str);
 char            *ft_itoa_base(t_flags *fl, long long int n, char *base);
 void			ft_cspec(t_args *ag, t_flags *fl);
+void            ft_sspec(t_args *ag, t_flags *fl);
 void			ft_procspec(t_flags *fl);
 int				ft_psn(const char *restrict fo, t_flags *fl);
 void			ft_wdh(const char *restrict fo, t_flags *fl);

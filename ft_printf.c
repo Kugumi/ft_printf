@@ -145,6 +145,8 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 		ft_cspec(ag, fl);
 	if (fo[f] == '%')
 	    ft_procspec(fl);
+	if (fo[f] == 's')
+		ft_sspec(ag, fl);
 	return (1);
 }
 
@@ -187,10 +189,11 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-int main(void)
+/*int main(void)
 {
 	int d = -92233720;
 	char c = 'h';
+	char *s = "priv!";
 	int d1 = 0;
 	int ll = 32767;
 	// long int l = 92;
@@ -198,7 +201,7 @@ int main(void)
 	// ft_printf("%5%");
 	// write(1, "\n", 1);
 	// printf("\n%d", printf("%5%"));
-	printf ("%.2c", NULL);
-	ft_printf ("%.2c", NULL);
+	printf ("%-.5s is a string\n", "this");
+	ft_printf ("%-.5s is a string", "this");
 	return (0);
-}
+}*/
