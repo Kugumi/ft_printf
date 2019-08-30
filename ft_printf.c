@@ -187,7 +187,7 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-/*int main(void)
+int main(void)
 {
 	int d = -92233720;
 	char c = 'h';
@@ -198,7 +198,7 @@ int	ft_printf(const char *restrict format, ...)
 	// ft_printf("%5%");
 	// write(1, "\n", 1);
 	// printf("\n%d", printf("%5%"));
-	printf ("@moulitest: %.d %.0d", 0, 0);
-	ft_printf ("@moulitest: %.d %.0d", 0, 0);
+	printf ("%.2c", NULL);
+	ft_printf ("%.2c", NULL);
 	return (0);
-}*/
+}
