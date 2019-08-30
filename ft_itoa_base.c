@@ -12,6 +12,67 @@
 
 #include "ft_printf.h"
 #include <stdio.h>
+
+int		ft_lennbr_base_ch(unsigned char n, int x)
+{
+	int	len;
+
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		n = n / x;
+		len++;
+	}
+	return (len);
+}
+
+int		ft_lennbr_base_sh(unsigned short int n, int x)
+{
+	int	len;
+
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		n = n / x;
+		len++;
+	}
+	return (len);
+}
+
+int		ft_lennbr_base_ui(unsigned int n, int x)
+{
+	int	len;
+
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		n = n / x;
+		len++;
+	}
+	return (len);
+}
+
+int		ft_lennbr_base_ull(unsigned long long int n, int x)
+{
+	int	len;
+
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		n = n / x;
+		len++;
+	}
+	return (len);
+}
+
 int		ft_lennbr_base(long long int n, int x)
 {
 	int	len;
@@ -27,7 +88,7 @@ int		ft_lennbr_base(long long int n, int x)
 	return (len);
 }
 
-char *ft_itoa_base(t_flags *fl, long long int n, char *base)
+char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
 {
 	int                     i;
 	unsigned long long int  nbr;
@@ -36,7 +97,18 @@ char *ft_itoa_base(t_flags *fl, long long int n, char *base)
 	int                     r;
 
 	x = ft_strlen(base);
-	i = (n > 0) ? ft_lennbr_base(n, x) : ft_lennbr_base(n, x);
+	i = (n > 0 && x == 10) ? ft_lennbr_base(n, x) : ft_lennbr_base(n, x);
+	if (x == 8 || x == 16)
+	{
+		if (sz == 1)
+			i = ft_lennbr_base_ch(n, x);
+		else if (sz == 2)
+			i = ft_lennbr_base_sh(n, x);
+		else if (sz == 4)
+			i = ft_lennbr_base_ui(n, x);
+		else if (sz == 8)
+			i = ft_lennbr_base_ull(n, x);
+	}
 	if (!(fl->psn == 0 && n == 0))
 	    fl->re += i;
 	r = i;
@@ -47,7 +119,7 @@ char *ft_itoa_base(t_flags *fl, long long int n, char *base)
 	t = (char *)malloc(sizeof(char) * i + 1);
 	if (t == NULL)
 		return (0);
-	if (n == -2147483648)
+	if (n == -2147483648 && x == 10)
 		return (ft_strcpy(t, "-2147483648"));
 	t[i] = '\0';
 	i--;

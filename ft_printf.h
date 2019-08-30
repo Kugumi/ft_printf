@@ -38,6 +38,7 @@ typedef struct	s_flags
 //	int					sign; // ??
 	int                 re;   //return value
 	int					nn;   // 0 with 0 psn
+	int					xox;  // 
 }				t_flags;
 
 typedef struct	s_err
@@ -49,7 +50,7 @@ void            ft_flag(t_flags *fl, long long int num, int r);
 void            ft_flagstr(t_flags *fl, char *str);
 void            ft_flagmi(t_flags *fl, long long int num, int r);
 int				ft_flagstrmi(t_flags *fl, char *str);
-char            *ft_itoa_base(t_flags *fl, long long int n, char *base);
+char 			*ft_itoa_base(t_flags *fl, long long int n, int sz, char *base);
 void			ft_cspec(t_args *ag, t_flags *fl);
 void            ft_sspec(t_args *ag, t_flags *fl);
 char            *ft_xoXspec(t_args *ag, t_flags *fl, const char * restrict fo);

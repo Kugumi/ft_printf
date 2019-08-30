@@ -11,6 +11,7 @@ t_flags	ft_filltf(t_flags *fl)
 	fl->psn = -1;
 	fl->lnh = 0;
 	fl->nn = 0;
+	fl->xox = 0;
 	return (*fl);
 }
 

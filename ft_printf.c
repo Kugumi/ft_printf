@@ -104,15 +104,15 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l)
 char	*ft_dispec(t_args *ag, t_flags *fl)
 {
 	if (!fl->lnh)
-		return (ft_itoa_base(fl, va_arg(ag->args, int), "0123456789"));
+		return (ft_itoa_base(fl, va_arg(ag->args, int), 4, "0123456789"));
 	else if (fl->lnh == 2)
-		return (ft_itoa_base(fl, va_arg(ag->args, long long int), "0123456789"));
+		return (ft_itoa_base(fl, va_arg(ag->args, long long int), 8, "0123456789"));
 	else if (fl->lnh == 1)
-		return (ft_itoa_base(fl, va_arg(ag->args, long int), "0123456789"));
+		return (ft_itoa_base(fl, va_arg(ag->args, long int), 8, "0123456789"));
 	else if (fl->lnh == 4)
-		return (ft_itoa_base(fl, (char)va_arg(ag->args, unsigned int), "0123456789"));
+		return (ft_itoa_base(fl, (char)va_arg(ag->args, int), 2, "0123456789"));
 	else if (fl->lnh == 3)
-		return (ft_itoa_base(fl, (short)va_arg(ag->args, int), "0123456789"));
+		return (ft_itoa_base(fl, (short)va_arg(ag->args, int), 1, "0123456789"));
 //	fl->re += ft_putstr(ft_itoa(l));
 	return (0);
 }
@@ -191,19 +191,19 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-/*int main(void)
+int main(void)
 {
 	int d = -92233720;
 	char c = 'h';
 	char *s = "priv!";
-	int d1 = 0;
-	int ll = 32767;
+	long int ll = -42;
+	//int ll = 32767;
 	// long int l = 92;
 
 	// ft_printf("%5%");
 	// write(1, "\n", 1);
 	// printf("\n%d", printf("%5%"));
-	printf ("%x\n", -566806828);
-	ft_printf ("%x\n", -566806828);
+	printf ("%lx| <> %x\n", ll, -42);
+	ft_printf ("%lx| <> %x\n", ll, -42);
 	return (0);
-}*/
+}
