@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/29 19:53:49 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/08/30 20:22:31 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,8 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 	}
 	if (fo[f] == 'd' || fo[f] == 'i')
 		ft_dispec(ag, fl);
+	if (fo[f] == 'x' || fo[f] == 'X' || fo[f] == 'o')
+		ft_xoXspec(ag, fl, fo + f);
 	if (fo[f] == 'c')
 		ft_cspec(ag, fl);
 	if (fo[f] == '%')
@@ -201,7 +203,7 @@ int	ft_printf(const char *restrict format, ...)
 	// ft_printf("%5%");
 	// write(1, "\n", 1);
 	// printf("\n%d", printf("%5%"));
-	printf ("%-.5s is a string\n", "this");
-	ft_printf ("%-.5s is a string", "this");
+	printf ("%x\n", -566806828);
+	ft_printf ("%x\n", -566806828);
 	return (0);
 }*/
