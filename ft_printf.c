@@ -203,7 +203,7 @@ int main(void)
 	// ft_printf("%5%");
 	// write(1, "\n", 1);
 	// printf("\n%d", printf("%5%"));
-	printf ("%lx| <> %x\n", ll, -42);
-	ft_printf ("%lx| <> %x\n", ll, -42);
+	printf ("%.100s", NULL);
+	//ft_printf ("%100.2s", NULL);
 	return (0);
 }

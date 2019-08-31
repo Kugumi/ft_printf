@@ -37,7 +37,7 @@ void ft_flagmi(t_flags *fl, long long int num, int r)
 			fl->wdh -= 1;
 			fl->re += 1;
 		}
-		if (num < 0 && !fl->pl && !fl->xox)
+		if (num < 0 && !fl->pl && !fl->isxox)
 		{
 			write(1, "-", 1);
 			fl->wdh -= 1;
@@ -45,6 +45,8 @@ void ft_flagmi(t_flags *fl, long long int num, int r)
 		}
         if (num == 0 && fl->psn == 0)
             fl->nn = 1;
+		if (fl->oc)
+			ft_octmi(fl);
 		if (fl->psn > 0)
 		{
 			if (r < fl->psn)
@@ -101,7 +103,7 @@ void ft_flag(t_flags *fl, long long int num, int r)
 		fl->wdh -= 1;
 		fl->re += 1;
 	}
-	if (num < 0 && !fl->pl && !fl->xox)
+	if (num < 0 && !fl->pl && !fl->isxox)
 	{
 		buff = ft_strjoin(buff, "-");
 		fl->wdh -= 1;
@@ -109,6 +111,8 @@ void ft_flag(t_flags *fl, long long int num, int r)
 	}
 	if (num == 0 && fl->psn == 0)
 	    fl->nn = 1;
+	if (fl->oc)
+		ft_oct(fl, &buff);
 	if (fl->psn > 0)
 	{
 		if (r < fl->psn)

@@ -109,6 +109,8 @@ char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
 		else if (sz == 8)
 			i = ft_lennbr_base_ull(n, x);
 	}
+	if (n == 0 && (fl->xox == 1 || fl->xox == 3))
+	    fl->oc = 0;
 	if (!(fl->psn == 0 && n == 0))
 	    fl->re += i;
 	r = i;
