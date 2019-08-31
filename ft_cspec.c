@@ -29,15 +29,14 @@ void	ft_cspec(t_args *ag, t_flags *fl)
 void	ft_sspec(t_args *ag, t_flags *fl)
 {
 	char	*str;
-	char	*buff;
 	int		i;
 	int		s;
 	size_t	j;
 
 	i = 0;
-	buff = (char *)malloc(sizeof(char));
-	buff[i] = '\0';
 	str = va_arg(ag->args, char *);
+	if (str == NULL)
+		str = "(null)";
 	if (!fl->mi)
 		ft_flagstr(fl, str);
 	else
