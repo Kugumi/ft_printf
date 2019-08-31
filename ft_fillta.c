@@ -13,6 +13,7 @@ t_flags	ft_filltf(t_flags *fl)
 	fl->nn = 0;
 	fl->xox = 0;
 	fl->isxox = 0;
+	fl->unsign = 0;
 	return (*fl);
 }
 

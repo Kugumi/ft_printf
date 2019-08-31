@@ -35,7 +35,7 @@ typedef struct	s_flags
 	int					wdh;  //width
 	int					psn;  //precision
 	int					lnh;  //length
-//	int					sign; // ??
+	int					unsign; // for u 
 	int                 re;   //return value
 	int					nn;   // 0 with 0 psn
 	int					xox;  // 1 - x 2 - o 3 - X
@@ -54,6 +54,7 @@ int				ft_flagstrmi(t_flags *fl, char *str);
 char 			*ft_itoa_base(t_flags *fl, long long int n, int sz, char *base);
 void			ft_cspec(t_args *ag, t_flags *fl);
 void            ft_sspec(t_args *ag, t_flags *fl);
+char    		*ft_uspec(t_args *ag, t_flags *fl);
 char            *ft_xoXspec(t_args *ag, t_flags *fl, const char * restrict fo);
 void			ft_procspec(t_flags *fl);
 int				ft_psn(const char *restrict fo, t_flags *fl);

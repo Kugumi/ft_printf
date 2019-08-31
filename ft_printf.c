@@ -141,6 +141,8 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 	}
 	if (fo[f] == 'd' || fo[f] == 'i')
 		ft_dispec(ag, fl);
+	if (fo[f] == 'u')
+		ft_uspec(ag, fl);
 	if (fo[f] == 'x' || fo[f] == 'X' || fo[f] == 'o')
 		ft_xoXspec(ag, fl, fo + f);
 	if (fo[f] == 'c')
@@ -191,7 +193,7 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-/*int main(void)
+int main(void)
 {
 	int d = -92233720;
 	char c = 'h';
@@ -204,6 +206,9 @@ int	ft_printf(const char *restrict format, ...)
 	// write(1, "\n", 1);
 	// printf("\n%d", printf("%5%"));
 	printf ("%s\n", NULL);
-	ft_printf ("%s", NULL);
+	ft_printf ("%s\n", NULL);
+	printf ("%llu, %llu, %u\n", ll, -42, -42);
+	//ft_printf ("%100.2s", NULL);
+	ft_printf ("%llu, %llu, %u\n", ll, -42, -42);
 	return (0);
-}*/
+}

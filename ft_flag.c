@@ -37,7 +37,7 @@ void ft_flagmi(t_flags *fl, long long int num, int r)
 			fl->wdh -= 1;
 			fl->re += 1;
 		}
-		if (num < 0 && !fl->pl && !fl->isxox)
+		if (num < 0 && !fl->pl && !fl->isxox && !fl->unsign)
 		{
 			write(1, "-", 1);
 			fl->wdh -= 1;
@@ -103,7 +103,7 @@ void ft_flag(t_flags *fl, long long int num, int r)
 		fl->wdh -= 1;
 		fl->re += 1;
 	}
-	if (num < 0 && !fl->pl && !fl->isxox)
+	if (num < 0 && !fl->pl && !fl->isxox && !fl->unsign)
 	{
 		buff = ft_strjoin(buff, "-");
 		fl->wdh -= 1;

@@ -98,7 +98,7 @@ char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
 
 	x = ft_strlen(base);
 	i = (n > 0 && x == 10) ? ft_lennbr_base(n, x) : ft_lennbr_base(n, x);
-	if (x == 8 || x == 16)
+	if (x == 8 || x == 16 || fl->unsign)
 	{
 		if (sz == 1)
 			i = ft_lennbr_base_ch(n, x);
@@ -125,8 +125,8 @@ char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
 		return (ft_strcpy(t, "-2147483648"));
 	t[i] = '\0';
 	i--;
-	nbr = (n < 0 && (x == 16 || x == 8)) ? (unsigned long long int)n : n;
 	nbr = (n < 0 && x == 10) ? (n * -1) : n;
+	nbr = (n < 0 && (x == 16 || x == 8 || fl->unsign)) ? (unsigned long long int)n : n;
 	while (i >= 0)
 	{
 		t[i] = base[nbr % x];
