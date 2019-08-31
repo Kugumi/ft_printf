@@ -126,7 +126,8 @@ char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
 	t[i] = '\0';
 	i--;
 	nbr = (n < 0 && x == 10) ? (n * -1) : n;
-	nbr = (n < 0 && (x == 16 || x == 8 || fl->unsign)) ? (unsigned long long int)n : n;
+	if (n < 0 && (x == 16 || x == 8 || fl->unsign)) 
+		nbr = (unsigned long long int)n;
 	while (i >= 0)
 	{
 		t[i] = base[nbr % x];

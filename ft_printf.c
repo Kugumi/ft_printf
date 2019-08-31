@@ -207,8 +207,8 @@ int main(void)
 	// printf("\n%d", printf("%5%"));
 	printf ("%s\n", NULL);
 	ft_printf ("%s\n", NULL);
-	printf ("%llu, %llu, %u\n", ll, -42, -42);
+	printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
 	//ft_printf ("%100.2s", NULL);
-	ft_printf ("%llu, %llu, %u\n", ll, -42, -42);
+	ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
 	return (0);
 }
