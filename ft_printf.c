@@ -143,6 +143,8 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 		ft_dispec(ag, fl);
 	if (fo[f] == 'u')
 		ft_uspec(ag, fl);
+	if (fo[f] == 'p')
+		ft_pspec(ag, fl);
 	if (fo[f] == 'x' || fo[f] == 'X' || fo[f] == 'o')
 		ft_xoXspec(ag, fl, fo + f);
 	if (fo[f] == 'c')
@@ -205,10 +207,12 @@ int main(void)
 	// ft_printf("%5%");
 	// write(1, "\n", 1);
 	// printf("\n%d", printf("%5%"));
-	printf ("%s\n", NULL);
-	ft_printf ("%s\n", NULL);
-	printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
-	//ft_printf ("%100.2s", NULL);
-	ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
+	// printf ("%s\n", NULL);
+	// ft_printf ("%s\n", NULL);
+	// printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
+	// //ft_printf ("%100.2s", NULL);
+	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
+	printf("p = %p\n", &ll);
+	ft_printf("p = %p", &ll);
 	return (0);
 }

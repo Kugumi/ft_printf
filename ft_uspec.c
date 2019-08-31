@@ -17,3 +17,10 @@ char    *ft_uspec(t_args *ag, t_flags *fl)
 		return (ft_itoa_base(fl, (unsigned short)va_arg(ag->args, unsigned int), 2, "0123456789"));
 	return (0);
 }
+
+char	*ft_pspec(t_args *ag, t_flags *fl)
+{
+	fl->isptr = 1;
+
+	return (ft_itoa_base(fl, va_arg(ag->args, intptr_t), 4, "0123456789abcdef"));
+}

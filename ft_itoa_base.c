@@ -88,6 +88,21 @@ int		ft_lennbr_base(long long int n, int x)
 	return (len);
 }
 
+int		ft_lennbr_base_ptr(intptr_t n, int x)
+{
+	int	len;
+
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		n = n / x;
+		len++;
+	}
+	return (len);
+}
+
 char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
 {
 	int                     i;
@@ -95,6 +110,7 @@ char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
 	char                    *t;
 	int                     x;
 	int                     r;
+	intptr_t				ptr;
 
 	x = ft_strlen(base);
 	i = (n > 0 && x == 10) ? ft_lennbr_base(n, x) : ft_lennbr_base(n, x);
@@ -108,6 +124,11 @@ char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
 			i = ft_lennbr_base_ui(n, x);
 		else if (sz == 8)
 			i = ft_lennbr_base_ull(n, x);
+	}
+	if (fl->isptr)
+	{
+		ptr = (intptr_t)&n;
+		i = ft_lennbr_base_ptr(ptr, x) + 2;
 	}
 	if (n == 0 && (fl->xox == 1 || fl->xox == 3))
 	    fl->oc = 0;
@@ -134,11 +155,11 @@ char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
 		nbr = nbr / x;
 		i--;
 	}
-	// if (n < 0 && x == 10)
-	// 	t[0] = '-';
-	/*  if (n < 0 && x == 10)
-		ft_putstr(t + 1);
-	else*/
+	if (fl->isptr)
+	{
+		t[0] = '0';
+		t[1] = 'x';
+	}
 	if (!fl->nn)
 		ft_putstr(t);
 	if (fl->mi)
