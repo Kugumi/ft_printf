@@ -141,18 +141,20 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 	}
 	if (fo[f] == 'd' || fo[f] == 'i')
 		ft_dispec(ag, fl);
-	if (fo[f] == 'u')
+	else if (fo[f] == 'u')
 		ft_uspec(ag, fl);
-	if (fo[f] == 'p')
+	else if (fo[f] == 'p')
 		ft_pspec(ag, fl);
-	if (fo[f] == 'x' || fo[f] == 'X' || fo[f] == 'o')
+	else if (fo[f] == 'x' || fo[f] == 'X' || fo[f] == 'o')
 		ft_xoXspec(ag, fl, fo + f);
-	if (fo[f] == 'c')
+	else if (fo[f] == 'c')
 		ft_cspec(ag, fl);
-	if (fo[f] == '%')
+	else if (fo[f] == '%')
 	    ft_procspec(fl);
-	if (fo[f] == 's')
+	else if (fo[f] == 's')
 		ft_sspec(ag, fl);
+	else if (fo[f - 1] == '%')
+	    ag->len -= 1;
 	return (1);
 }
 
@@ -212,7 +214,10 @@ int main(void)
 	// printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
 	// //ft_printf ("%100.2s", NULL);
 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
-	printf("p = %p\n", &ll);
-	ft_printf("p = %p", &ll);
+	//printf("%p\n", 0);
+	//ft_printf("%p", 0);
+    ft_printf("%.2hhd", 1021587911);
+    printf("%.2hhd", 1021587911);
+
 	return (0);
 }
