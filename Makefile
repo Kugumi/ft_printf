@@ -12,8 +12,6 @@ DIR_O = temporary
 
 HEADER = ft_printf.h
 
-TEST = main.c
-
 SOURCES = ft_cspec.c ft_itoa_base.c ft_fillta.c ft_printf.c ft_flag.c \
 ft_flags.c ft_flagsproc.c ft_procspec.c ft_xoXspec.c ft_uspec.c
 
@@ -41,6 +39,3 @@ fclean: clean
 	@make fclean -C $(LIBFT)
 
 re: fclean all
-
-test:
-	gcc $(TEST) $(NAME)	-I $(HEADER)

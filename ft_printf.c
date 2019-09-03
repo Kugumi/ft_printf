@@ -197,12 +197,12 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-int main(void)
+/*int main(void)
 {
 	int d = -92233720;
 	char c = 'h';
 	char *s = "priv!";
-	long int ll = -42;
+	static long int ll = -42;
 	//int ll = 32767;
 	// long int l = 92;
 
@@ -216,8 +216,8 @@ int main(void)
 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
 	//printf("%p\n", 0);
 	//ft_printf("%p", 0);
-    ft_printf("%.2hhd", 1021587911);
-    printf("%.2hhd", 1021587911);
+    ft_printf("%#.5o\n", 5263);
+    printf("%#.5o", 5263);
 
 	return (0);
-}
+}*/

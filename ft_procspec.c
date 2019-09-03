@@ -63,7 +63,7 @@ void	ft_flagstr(t_flags *fl, char *str)
 	    fl->wdh -= (int)(j = ft_strlen(buff));
 	    fl->re += (int)j;
     }
-	if (fl->wdh >= (int)j)
+	if (fl->wdh > 0)
 	{
 		//fl->wdh -= j;
 		while (fl->wdh)

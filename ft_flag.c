@@ -45,8 +45,10 @@ void ft_flagmi(t_flags *fl, long long int num, int r)
 		}
         if (num == 0 && fl->psn == 0)
             fl->nn = 1;
-        if (num == 0 && fl->xox == 2 && fl->psn != 0)
+        if (fl->xox == 2 && fl->psn > ft_lennbr_base_ull(num, 8))
             fl->oc = 0;
+        if (num == 0 && fl->xox == 2 && fl->psn != 0)
+        	fl->oc = 0;
 		if (fl->oc)
 			ft_octmi(fl);
 		if (fl->psn > 0)
@@ -113,8 +115,10 @@ void ft_flag(t_flags *fl, long long int num, int r)
 	}
 	if (num == 0 && fl->psn == 0)
 	    fl->nn = 1;
-    if (num == 0 && fl->xox == 2 && fl->psn != 0)
+    if (fl->xox == 2 && fl->psn > ft_lennbr_base_ull(num, 8))
         fl->oc = 0;
+	if (num == 0 && fl->xox == 2 && fl->psn != 0)
+		fl->oc = 0;
 	if (fl->oc)
 		ft_oct(fl, &buff);
 	if (fl->psn > 0)

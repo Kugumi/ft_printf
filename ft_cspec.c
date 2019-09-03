@@ -31,7 +31,6 @@ void	ft_sspec(t_args *ag, t_flags *fl)
 	char	*str;
 	int		i;
 	int		s;
-	size_t	j;
 
 	i = 0;
 	str = va_arg(ag->args, char *);
@@ -45,7 +44,7 @@ void	ft_sspec(t_args *ag, t_flags *fl)
 	{
 	    if (fl->psn == -1)
 		{
-			if (fl->wdh > (int)(j = ft_strlen(str)))
+			if (fl->wdh > 0)
 			{
 			//fl->wdh -= (int)j;
 				while (fl->wdh)
@@ -67,7 +66,7 @@ void	ft_sspec(t_args *ag, t_flags *fl)
 		}
 		else
 		{
-			if (fl->wdh > s)
+			if (fl->wdh > 0)
 			{
 				while (fl->wdh)
 				{

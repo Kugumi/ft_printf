@@ -52,6 +52,7 @@ void            ft_flag(t_flags *fl, long long int num, int r);
 void            ft_flagstr(t_flags *fl, char *str);
 void            ft_flagmi(t_flags *fl, long long int num, int r);
 int				ft_flagstrmi(t_flags *fl, char *str);
+int				ft_lennbr_base_ull(unsigned long long int n, int x);
 char 			*ft_itoa_base(t_flags *fl, long long int n, int sz, char *base);
 void			ft_cspec(t_args *ag, t_flags *fl);
 char			*ft_pspec(t_args *ag, t_flags *fl);
