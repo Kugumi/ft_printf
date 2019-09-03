@@ -22,5 +22,5 @@ char	*ft_pspec(t_args *ag, t_flags *fl)
 {
 	fl->isptr = 1;
 
-	return (ft_itoa_base(fl, va_arg(ag->args, intptr_t), 4, "0123456789abcdef"));
+	return (ft_itoa_base(fl, va_arg(ag->args, long long int), 8, "0123456789abcdef"));
 }
