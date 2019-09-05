@@ -18,22 +18,27 @@ t_flags	ft_filltf(t_flags *fl)
 	return (*fl);
 }
 
-void	ft_wdh(const char *restrict fo, t_flags *fl)
+void	ft_wdh(const char *restrict fo, t_flags *fl, t_args *ag)
 {
 	char buff[11];
 	int i;
 
 	i = 0;
-	while (fo[i] >= 48 && fo[i] <= 57)
+	if (fo[i] == '*')
+		fl->wdh = va_arg(ag->args, int);
+	else
 	{
-		buff[i] = fo[i];
-		i++;
+		while (fo[i] >= 48 && fo[i] <= 57)
+		{
+			buff[i] = fo[i];
+			i++;
+		}
+		buff[i] = '\0';
+		fl->wdh = ft_atoi(buff);
 	}
-	buff[i] = '\0';
-	fl->wdh = ft_atoi(buff);
 }
 
-int	ft_psn(const char *restrict fo, t_flags *fl)
+int	ft_psn(const char *restrict fo, t_flags *fl, t_args *ag)
 {
 	char buff[11];
 	int i;
@@ -41,21 +46,26 @@ int	ft_psn(const char *restrict fo, t_flags *fl)
 
 	i = 0;
 	f = 1;
-	if (!(fo[f] >= 48 && fo[f] <= 57))
+	if (!(fo[f] >= 48 && fo[f] <= 57) && fo[f] != '*')
 	{
 		fl->psn = 0;
 		return (0);
 	}
 	else
 	{
-		while (fo[f] >= 48 && fo[f] <= 57)
+		if (fo[f] == '*')
+			fl->psn = va_arg(ag->args, int);
+		else
 		{
-			buff[i] = fo[f];
-			i++;
-			f++;
+			while (fo[f] >= 48 && fo[f] <= 57)
+			{
+				buff[i] = fo[f];
+				i++;
+				f++;
+			}
+			buff[i] = '\0';
+			fl->psn = ft_atoi(buff);
 		}
-		buff[i] = '\0';
 	}
-	fl->psn = ft_atoi(buff);
 	return (1);
 }

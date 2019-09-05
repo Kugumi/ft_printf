@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/29 18:38:20 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/05 21:46:14 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_flags
 	int					wdh;  //width
 	int					psn;  //precision
 	int					lnh;  //length
-	int					unsign; // for u 
+	int					unsign; // for u
 	int                 re;   //return value
 	int					nn;   // 0 with 0 psn
 	int					xox;  // 1 - x 2 - o 3 - X
@@ -60,19 +60,19 @@ void            ft_sspec(t_args *ag, t_flags *fl);
 char    		*ft_uspec(t_args *ag, t_flags *fl);
 char            *ft_xoXspec(t_args *ag, t_flags *fl, const char * restrict fo);
 void			ft_procspec(t_flags *fl);
-int				ft_psn(const char *restrict fo, t_flags *fl);
-void			ft_wdh(const char *restrict fo, t_flags *fl);
+int				ft_psn(const char *restrict fo, t_flags *fl, t_args *ag);
+void			ft_wdh(const char *restrict fo, t_flags *fl, t_args *ag);
 void            ft_oct(t_flags *fl, char **buff);
 void            ft_octmi(t_flags *fl);
 t_args			ft_fillta(t_args *ag);
 t_flags			ft_filltf(t_flags *fl);
 int				ft_printf(const char *restrict format, ...);
-int				ft_flagsproc(const char *restrict fo, t_flags *fl);
-int				ft_flagsdi(const char *restrict fo, t_flags *fl);
+int				ft_flagsproc(const char *restrict fo, t_flags *fl, t_args *ag);
+int				ft_flagsdi(const char *restrict fo, t_flags *fl, t_args *ag);
 int 			ft_flagscsp(const char *restrict fo, t_flags *fl,
-		unsigned long long l);
-int				ft_flagsf(const char *restrict fo, t_flags *fl);
-int				ft_flagsu(const char *restrict fo, t_flags *fl);
-int				ft_flagsoxX(const char *restrict fo, t_flags *fl);
+		unsigned long long l, t_args *ag);
+int				ft_flagsf(const char *restrict fo, t_flags *fl, t_args *ag);
+int				ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag);
+int				ft_flagsoxX(const char *restrict fo, t_flags *fl, t_args *ag);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 00:47:04 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/29 00:58:44 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/05 21:52:10 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_flagsproc(const char *restrict fo, t_flags *fl)
+int	ft_flagsproc(const char *restrict fo, t_flags *fl, t_args *ag)
 {
 	int f;
 
@@ -31,13 +31,13 @@ int	ft_flagsproc(const char *restrict fo, t_flags *fl)
 	}
 	if (fo[f] >= 48 && fo[f] <= 57)
 	{
-		ft_wdh(fo + f, fl);
+		ft_wdh(fo + f, fl, ag);
 		while (fo[f] >= 48 && fo[f] <= 57)
 			f++;
 	}
 	if (fo[f] == '.')
 	{
-		ft_psn(fo + f, fl);
+		ft_psn(fo + f, fl, ag);
 		f++;
 		while (fo[f] >= 48 && fo[f] <= 57)
 			f++;

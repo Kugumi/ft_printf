@@ -95,7 +95,6 @@ char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
 	char                    *t;
 	int                     x;
 	int                     r;
-	intptr_t				ptr;
 
 	x = ft_strlen(base);
 	i = (n > 0 && x == 10) ? ft_lennbr_base(n, x) : ft_lennbr_base(n, x);
