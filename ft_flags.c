@@ -28,7 +28,8 @@ int ft_flagsdi(const char *restrict fo, t_flags *fl, t_args *ag)
 	}
 	if (fo[f] == '.')
 	{
-		fl->ze = 0;
+		if (fo[f + 1] != '*')
+			fl->ze = 0;
 		ft_psn(fo + f, fl, ag);
 		f++;
 		while ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
@@ -53,7 +54,7 @@ int ft_flagscsp(const char *restrict fo, t_flags *fl, unsigned long long l, t_ar
 			return (-1);
 		f++;
 	}
-	if (fo[f] >= 48 && fo[f] <= 57)
+	if ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
 	{
 		ft_wdh(fo + f, fl, ag);
 		while ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
@@ -93,7 +94,7 @@ int ft_flagsf(const char *restrict fo, t_flags *fl, t_args *ag)
 			return (-1);
 		f++;
 	}
-	if (fo[f] >= 48 && fo[f] <= 57)
+	if ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
 	{
 		ft_wdh(fo + f, fl, ag);
 		while ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
@@ -133,7 +134,7 @@ int ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag)
 			return (-1);
 		f++;
 	}
-	if (fo[f] >= 48 && fo[f] <= 57)
+	if ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
 	{
 		ft_wdh(fo + f, fl, ag);
 		while ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
@@ -141,7 +142,8 @@ int ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag)
 	}
 	if (fo[f] == '.')
 	{
-		fl->ze = 0;
+		if (fo[f + 1] != '*')
+			fl->ze = 0;
 		ft_psn(fo + f, fl, ag);
 		f++;
 		while ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
@@ -173,7 +175,7 @@ int ft_flagsoxX(const char *restrict fo, t_flags *fl, t_args *ag)
 			return (-1);
 		f++;
 	}
-	if (fo[f] >= 48 && fo[f] <= 57)
+	if ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
 	{
 		ft_wdh(fo + f, fl, ag);
 		while ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
@@ -181,7 +183,8 @@ int ft_flagsoxX(const char *restrict fo, t_flags *fl, t_args *ag)
 	}
 	if (fo[f] == '.')
 	{
-		fl->ze = 0;
+		if (fo[f + 1] != '*')
+			fl->ze = 0;
 		ft_psn(fo + f, fl, ag);
 		f++;
 		while ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')

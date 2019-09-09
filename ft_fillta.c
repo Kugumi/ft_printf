@@ -22,17 +22,28 @@ void	ft_wdh(const char *restrict fo, t_flags *fl, t_args *ag)
 {
 	char buff[11];
 	int i;
+	int j;
 
 	i = 0;
-	if (fo[i] == '*')
-		fl->wdh = va_arg(ag->args, int);
+	j = 0;
+	if (fo[i] == '*' && !(fo[i + 1] >= 48 && fo[i + 1] <= 57))
+	{
+        fl->wdh = va_arg(ag->args, int);
+        if (fl->wdh < 0)
+        {
+            fl->mi = 1;
+            fl->wdh *= -1;
+        }
+    }
 	else
 	{
-		while (fo[i] >= 48 && fo[i] <= 57)
+		if (fo[i] == '*')
 		{
-			buff[i] = fo[i];
+			va_arg(ag->args, int);
 			i++;
 		}
+		while (fo[i] >= 48 && fo[i] <= 57)
+			buff[j++] = fo[i++];
 		buff[i] = '\0';
 		fl->wdh = ft_atoi(buff);
 	}
@@ -54,7 +65,11 @@ int	ft_psn(const char *restrict fo, t_flags *fl, t_args *ag)
 	else
 	{
 		if (fo[f] == '*')
-			fl->psn = va_arg(ag->args, int);
+		{
+            fl->psn = va_arg(ag->args, int);
+            if (fl->psn < 0 && fo[f + 1] == 's')
+                fl->psn *= -1;
+        }
 		else
 		{
 			while (fo[f] >= 48 && fo[f] <= 57)

@@ -216,8 +216,8 @@ int	ft_printf(const char *restrict format, ...)
 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
 	//printf("%p\n", 0);
 	//ft_printf("%p", 0);
-    ft_printf("%*d\n", 5, 6);
-    printf("%*d", 5, 6);
+    ft_printf("{%.*d}\n", -5, 42);
+    printf("{%.*d}", -5, 42);
 
 	return (0);
 }*/
