@@ -164,12 +164,20 @@ int	ft_printf(const char *restrict format, ...)
 	t_err	err;
 	t_flags	fl;
 	int		f;
+	int 	c;
 
 	va_start(ag.args, format);
 	f = 0;
 	fl.re = 0;
 	while (format[f])
 	{
+		while (format[f] == '{')
+		{
+            if (c = ft_color(format + f))
+                f += c;
+            if (c == 0)
+                break;
+        }
 		while (format[f] == '%')
 		{
 			fl = ft_filltf(&fl);
@@ -197,7 +205,7 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-/*int main(void)
+int main(void)
 {
 	int d = -92233720;
 	char c = 'h';
@@ -216,8 +224,8 @@ int	ft_printf(const char *restrict format, ...)
 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
 	//printf("%p\n", 0);
 	//ft_printf("%p", 0);
-    ft_printf("{%.*d}\n", -5, 42);
-    printf("{%.*d}", -5, 42);
+    ft_printf("{bold}{magend}priv {priv}{red}priv {green}priv {yellow}priv {blue}priv {cyan}priv {eoc}nya {gray}priv\n");
+    printf("priv");
 
 	return (0);
-}*/
+}

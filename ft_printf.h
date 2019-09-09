@@ -74,5 +74,6 @@ int 			ft_flagscsp(const char *restrict fo, t_flags *fl,
 int				ft_flagsf(const char *restrict fo, t_flags *fl, t_args *ag);
 int				ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag);
 int				ft_flagsoxX(const char *restrict fo, t_flags *fl, t_args *ag);
+int             ft_color(const char *restrict fo);
 
 #endif

@@ -13,7 +13,8 @@ DIR_O = temporary
 HEADER = ft_printf.h
 
 SOURCES = ft_cspec.c ft_itoa_base.c ft_fillta.c ft_printf.c ft_flag.c \
-ft_flags.c ft_flagsproc.c ft_procspec.c ft_xoXspec.c ft_uspec.c
+ft_flags.c ft_flagsproc.c ft_procspec.c ft_xoXspec.c ft_uspec.c \
+ft_color.c
 
 OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
 
