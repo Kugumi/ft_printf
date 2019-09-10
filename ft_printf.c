@@ -96,7 +96,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l, t_args 
 		return (ft_flagsoxX(fo, fl, ag));
 	if (fo[l - 2] == 'f')
 		return (ft_flagsf(fo, fl, ag));
-	if (fo[l - 2] == 'c' || fo[l - 2] == 's' || fo[l - 2] == 'p')
+	if (fo[l - 2] == 'c' || fo[l - 2] == 's' || fo[l - 2] == 'p' || fo[l - 2] == 'r')
 		return (ft_flagscsp(fo, fl, l, ag));
 	return (-1);
 }
@@ -126,14 +126,14 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 		return (0);
 	ag->len = 2;
 	while (fo[f] != 'c' && fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'p' && fo[f] != 'o' && fo[f] != 'u' && fo[f] != 'x' && fo[f] !=
-				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0' && fo[f] != '%')
+				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0' && fo[f] != '%' && fo[f] != 'r')
 	{
 		ag->len += 1;
 		f++;
 	}
 	f = 1;
 	while (fo[f] != 'c' && fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'p' && fo[f] != 'o' && fo[f] != 'u' && fo[f] != 'x' && fo[f] !=
-				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0' && fo[f] != '%')
+				'X' && fo[f] != 'f' && fo[f] != 's' && fo[f] != '\0' && fo[f] != '%' && fo[f] != 'r')
 	{
 			if (ft_flags(fo + f, fl, ag->len, ag) == -1)
 				return (-1);
@@ -153,6 +153,8 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 	    ft_procspec(fl);
 	else if (fo[f] == 's')
 		ft_sspec(ag, fl);
+	else if (fo[f] == 'r')
+		ft_rspec(ag, fl);
 	else if (fo[f - 1] == '%')
 	    ag->len -= 1;
 	return (1);
@@ -173,7 +175,7 @@ int	ft_printf(const char *restrict format, ...)
 	{
 		while (format[f] == '{')
 		{
-            if (c = ft_color(format + f))
+            if ((c = ft_color(format + f)) != 0)
                 f += c;
             if (c == 0)
                 break;
@@ -224,7 +226,7 @@ int main(void)
 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
 	//printf("%p\n", 0);
 	//ft_printf("%p", 0);
-    ft_printf("{bold}{magend}priv {priv}{red}priv {green}priv {yellow}priv {blue}priv {cyan}priv {eoc}nya {gray}priv\n");
+    ft_printf("%-.2r\n", "\n\n\t\f");
     printf("priv");
 
 	return (0);
