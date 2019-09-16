@@ -76,5 +76,7 @@ int				ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag);
 int				ft_flagsoxX(const char *restrict fo, t_flags *fl, t_args *ag);
 int             ft_color(const char *restrict fo);
 void            ft_rspec(t_args *ag, t_flags *fl);
+char    		*ft_dtoa(t_flags *fl, long double x, int p);
+char    		*ft_fspec(t_args *ag, t_flags *fl);
 
 #endif

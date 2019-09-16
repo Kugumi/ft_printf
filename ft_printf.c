@@ -149,6 +149,8 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 		ft_xoXspec(ag, fl, fo + f);
 	else if (fo[f] == 'c')
 		ft_cspec(ag, fl);
+	else if (fo[f] == 'f')
+		ft_fspec(ag, fl);
 	else if (fo[f] == '%')
 	    ft_procspec(fl);
 	else if (fo[f] == 's')
@@ -207,27 +209,29 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-int main(void)
-{
-	int d = -92233720;
-	char c = 'h';
-	char *s = "priv!";
-	static long int ll = -42;
-	//int ll = 32767;
-	// long int l = 92;
+// int main(void)
+// {
+// 	double d = -92233720;
+// 	char c = 'h';
+// 	char *s = "priv!";
+// 	static long int ll = -42;
+// 	//int ll = 32767;
+// 	// long int l = 92;
 
-	// ft_printf("%5%");
-	// write(1, "\n", 1);
-	// printf("\n%d", printf("%5%"));
-	// printf ("%s\n", NULL);
-	// ft_printf ("%s\n", NULL);
-	// printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
-	// //ft_printf ("%100.2s", NULL);
-	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
-	//printf("%p\n", 0);
-	//ft_printf("%p", 0);
-    ft_printf("%-.2r\n", "\n\n\t\f");
-    printf("priv");
+// 	// ft_printf("%5%");
+// 	// write(1, "\n", 1);
+// 	// printf("\n%d", printf("%5%"));
+// 	// printf ("%s\n", NULL);
+// 	// ft_printf ("%s\n", NULL);
+// 	// printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
+// 	// //ft_printf ("%100.2s", NULL);
+// 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
+// 	//printf("%p\n", 0);
+// 	//ft_printf("%p", 0);
+//     // ft_printf("%-.2r\n", "\n\n\t\f");
+//     // printf("priv");
+// 	printf("%.0f\n", d);
+// 	ft_printf("%.0f\n", d);
 
-	return (0);
-}
+// 	return (0);
+// }
