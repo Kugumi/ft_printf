@@ -209,13 +209,14 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
- int main(void)
-{
-// 	double d = -92233720;
-// 	char c = 'h';
-// 	char *s = "priv!";
-// 	static long int ll = -42;
-// 	//int ll = 32767;
+// int main(void)
+// {
+//  	double d = 92233720;
+// 	d = d + d / .0;
+// 	// char c = 'h';
+// 	// char *s = "priv!";
+// 	// static long int ll = -42;
+// 	// int ll = 32767;
 // 	// long int l = 92;
 
 // 	// ft_printf("%5%");
@@ -224,15 +225,22 @@ int	ft_printf(const char *restrict format, ...)
 // 	// printf ("%s\n", NULL);
 // 	// ft_printf ("%s\n", NULL);
 // 	// printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
-// 	// //ft_printf ("%100.2s", NULL);
+// 	// ft_printf ("%100.2s", NULL);
 // 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
-// 	//printf("%p\n", 0);
-// 	//ft_printf("%p", 0);
+// 	// printf("%p\n", 0);
+// 	// ft_printf("%p", 0);
 //     // ft_printf("%-.2r\n", "\n\n\t\f");
 //     // printf("priv");
- 	printf("%f", -0.00032);
- 	printf("\n");
- 	ft_printf("%f", -0.00032);
+//  	// printf("%f", d);
+//  	// printf("%Lf", -56.2012685l);
+// 	// printf("\n");
+// 	// printf("%.100Lf", -56.2012685l);
+// 	// printf("\n");
+//  	// ft_printf("%Lf", -56.2012685l);
+// 	// printf("\n\n\n\n");
+// 	printf ("%.16Lf\n", -LDBL_MIN);
+//     printf ("\n");
+//     ft_printf ("%.16Lf", -LDBL_MIN);
 
-    return (0);
-}
+//     return (0);
+// }
