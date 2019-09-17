@@ -147,6 +147,8 @@ void ft_flag(t_flags *fl, long long int num, int r)
 				tmp = ft_strjoin(buff, "0");
 				free(buff);
 				buff = tmp;
+				fl->wdh -= 1;
+				fl->re += 1;
 			}
 			else
 			{

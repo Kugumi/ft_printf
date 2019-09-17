@@ -157,5 +157,6 @@ char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
             }
         }
     }
-	return (t);
+	free(t);
+	return (NULL);
 }

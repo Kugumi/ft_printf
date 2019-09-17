@@ -28,23 +28,26 @@ char    *ft_dtoa(t_flags *fl, long double x, int p)
     if (x != x)
     {
         write(1, "nan", 3);
-        return ("nan");
+        return (NULL);
     }
     if ((x == x + x / .0) && x > 0)
     {
         if (fl->pl)
         {
             write(1, "+inf", 4);
-            return ("+inf");
+            return (NULL);
         }
         else
         {
             write(1, "inf", 3);
-            return ("inf");
+            return (NULL);
         }
     }
     if ((x == x + x / .0) && x < 0)
-        return ("-inf");
+    {
+        write(1, "-inf", 4);
+        return (NULL);
+    }
     if ((x == x + x / .0) && x > 0)
     isnull = 0;
     c = 0;
@@ -144,6 +147,8 @@ char    *ft_dtoa(t_flags *fl, long double x, int p)
             }
         }
     }
+    free(str);
+    str = NULL;
     return (str);
 }
 
