@@ -48,8 +48,8 @@ char    *ft_dtoa(t_flags *fl, long double x, int p)
     if ((x == x + x / .0) && x > 0)
     isnull = 0;
     c = 0;
-    if (x < 0)
-        c++;
+//    if (x < 0)
+//        c++;
     c = c + lennbrf(x);
     if (x > -1 && x < 1)
     {
@@ -118,11 +118,32 @@ char    *ft_dtoa(t_flags *fl, long double x, int p)
         bp = bp / 10;
         c--;
     }
-    if (str[0] == '0' && mn)
-        str[0] = '-';
+//    if (str[0] == '0' && mn)
+//        str[0] = '-';
     if (!fl->mi)
-        ft_fflag(fl, str);
+        ft_fflag(fl, str, mn);
+    else
+        ft_fflagmi(fl, str, mn);
     ft_putstr(str);
+    if (fl->oc && fl->psn == 0)
+    {
+        write(1, ".", 1);
+        fl->re += 1;
+        fl->wdh -= 1;
+    }
+    if (fl->mi)
+    {
+        if (fl->wdh > (int)ft_strlen(str))
+        {
+            fl->wdh -= (int)ft_strlen(str);
+            while (fl->wdh)
+            {
+                write(1, " ", 1);
+                fl->wdh -= 1;
+                fl->re += 1;
+            }
+        }
+    }
     return (str);
 }
 

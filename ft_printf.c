@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 #include <stdio.h>
-
+#include <float.h>
 int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l, t_args *ag)
 {
     if (!(l - 2 == 0))
@@ -209,8 +209,8 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-// int main(void)
-// {
+/* int main(void)
+ {
 //  	double d = 92233720;
 // 	d = d + d / .0;
 // 	// char c = 'h';
@@ -238,9 +238,9 @@ int	ft_printf(const char *restrict format, ...)
 // 	// printf("\n");
 //  	// ft_printf("%Lf", -56.2012685l);
 // 	// printf("\n\n\n\n");
-// 	printf ("%.16Lf\n", -LDBL_MIN);
-//     printf ("\n");
-//     ft_printf ("%.16Lf", -LDBL_MIN);
+ 	printf ("%-5.0f", -7.3);
+     printf ("\n");
+     ft_printf ("%-5.0f", -7.3);
 
-//     return (0);
-// }
+   return (0);
+}*/
