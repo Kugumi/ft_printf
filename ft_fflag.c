@@ -3,6 +3,7 @@
 void	ft_fflag(t_flags *fl, char *s, int num)
 {
 	char *buff;
+	char *tmp;
 	int i;
 	int r;
 
@@ -15,26 +16,34 @@ void	ft_fflag(t_flags *fl, char *s, int num)
 	{
 		if (!num)
 		{
-			buff = ft_strjoin(buff, "+");
+			tmp = ft_strjoin(buff, "+");
+			free(buff);
+			buff = tmp;
 			fl->wdh -= 1;
 			fl->re += 1;
 		}
         else
         {
-            buff = ft_strjoin(buff, "-");
+            tmp = ft_strjoin(buff, "-");
+            free(buff);
+            buff = tmp;
             fl->wdh -= 1;
             fl->re += 1;
         }
 	}
 	else if (fl->sp && !num)
 	{
-		buff = ft_strjoin(buff, " ");
+		tmp = ft_strjoin(buff, " ");
+        free(buff);
+        buff = tmp;
 		fl->wdh -= 1;
 		fl->re += 1;
 	}
     if (num && !fl->pl)
     {
-        buff = ft_strjoin(buff, "-");
+        tmp = ft_strjoin(buff, "-");
+        free(buff);
+        buff = tmp;
         fl->wdh -= 1;
         fl->re += 1;
     }
@@ -44,15 +53,24 @@ void	ft_fflag(t_flags *fl, char *s, int num)
 		while (fl->wdh)
 		{
 			if (fl->ze)
-				buff = ft_strjoin(buff, "0");
+			{
+                tmp = ft_strjoin(buff, "0");
+                free(buff);
+                buff = tmp;
+            }
 			else
-				buff = ft_strjoin(" ", buff);
+            {
+                tmp = ft_strjoin(" ", buff);
+                free(buff);
+                buff = tmp;
+            }
 			fl->wdh -= 1;
 			fl->re += 1;
 		}
 	}
 	while(buff[i] != '\0')
 		write(1, &buff[i++], 1);
+	free(buff);
 }
 
 void ft_fflagmi(t_flags *fl, char *s, int num)

@@ -95,6 +95,7 @@ int	ft_flagstrmir(t_flags *fl, char *str)
 void	ft_flagstrr(t_flags *fl, char *str)
 {
 	char	*b;
+	char 	*tmp;
 	int		i;
 	size_t	j;
 
@@ -110,7 +111,9 @@ void	ft_flagstrr(t_flags *fl, char *str)
 	}
 	else if (fl->psn == -1)
     {
-	    b = ft_strjoin(b, str);
+	    tmp = ft_strjoin(b, str);
+		free(b);
+		b = tmp;
 	    fl->wdh -= (int)(j = ft_strlen(b));
 	    fl->re += (int)j;
     }
@@ -119,7 +122,9 @@ void	ft_flagstrr(t_flags *fl, char *str)
 		//fl->wdh -= j;
 		while (fl->wdh)
 		{
-			b = ft_strjoin(" ", b);
+			tmp = ft_strjoin(" ", b);
+			free(b);
+			b = tmp;
 			fl->wdh -= 1;
 			fl->re += 1;
 		}
@@ -146,6 +151,7 @@ void	ft_flagstrr(t_flags *fl, char *str)
 			break;
 		write(1, &b[i++], 1);
 	}
+	free(b);
 }
 
 void	ft_rspec(t_args *ag, t_flags *fl)

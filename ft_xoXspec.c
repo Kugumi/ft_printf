@@ -72,21 +72,29 @@ char *ft_xoXspec(t_args *ag, t_flags *fl, const char * restrict fo)
 
 void ft_oct(t_flags *fl, char **buff)
 {
-    if (fl->xox == 1)
+    char *tmp;
+
+	if (fl->xox == 1)
     {
-		*buff = ft_strjoin("0x", *buff);
+		tmp = ft_strjoin("0x", *buff);
+		free(*buff);
+		*buff = tmp;
 		fl->wdh -= 2;
 		fl->re += 2;
 	}
     else if (fl->xox == 2)
 	{
-    	*buff = ft_strjoin("0", *buff);
+    	tmp = ft_strjoin("0", *buff);
+		free(*buff);
+		*buff = tmp;
     	fl->wdh -= 1;
     	fl->re += 1;
 	}
     else if (fl->xox == 3)
 	{
-    	*buff = ft_strjoin("0X", *buff);
+    	tmp = ft_strjoin("0X", *buff);
+		free(*buff);
+		*buff = tmp;
     	fl->wdh -= 2;
     	fl->re += 2;
 	}

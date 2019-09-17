@@ -44,6 +44,7 @@ void	ft_procspec(t_flags *fl)
 void	ft_flagstr(t_flags *fl, char *str)
 {
 	char	*buff;
+	char 	*tmp;
 	int		i;
 	size_t	j;
 
@@ -59,7 +60,9 @@ void	ft_flagstr(t_flags *fl, char *str)
 	}
 	else if (fl->psn == -1)
     {
-	    buff = ft_strjoin(buff, str);
+	    tmp = ft_strjoin(buff, str);
+		free(buff);
+		buff = tmp;
 	    fl->wdh -= (int)(j = ft_strlen(buff));
 	    fl->re += (int)j;
     }
@@ -68,13 +71,16 @@ void	ft_flagstr(t_flags *fl, char *str)
 		//fl->wdh -= j;
 		while (fl->wdh)
 		{
-			buff = ft_strjoin(" ", buff);
+			tmp = ft_strjoin(" ", buff);
+			free(buff);
+			buff = tmp;
 			fl->wdh -= 1;
 			fl->re += 1;
 		}
 	}
 	while (buff[i] != '\0')
 		write(1, &buff[i++], 1);
+	free(buff);
 }
 
 int	ft_flagstrmi(t_flags *fl, char *str)

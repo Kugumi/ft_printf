@@ -65,22 +65,13 @@ void ft_flagmi(t_flags *fl, long long int num, int r)
 				}
 			}
 		}
-/*  	if (fl->wdh > r)
-		{
-			fl->wdh -= r;
-			while (fl->wdh)
-			{
-				write(1, " ", 1);
-				fl->wdh -= 1;
-				fl->re += 1;
-			}
-		}*/
 	}
 }
 
 void ft_flag(t_flags *fl, long long int num, int r)
 {
 	char *buff;
+	char *tmp;
 	int i;
 
 	i = 0;
@@ -90,26 +81,34 @@ void ft_flag(t_flags *fl, long long int num, int r)
 	{
 		if (num >= 0)
 		{
-			buff = ft_strjoin(buff, "+");
+			tmp = ft_strjoin(buff, "+");
+			free(buff);
+			buff = tmp;
 			fl->wdh -= 1;
 			fl->re += 1;
 		}
 		else
 		{
-			buff = ft_strjoin(buff, "-");
+			tmp = ft_strjoin(buff, "-");
+			free(buff);
+			buff = tmp;
 			fl->wdh -= 1;
 			fl->re += 1;
 		}
 	}
 	else if (fl->sp && num >= 0)
 	{
-		buff = ft_strjoin(buff, " ");
+		tmp = ft_strjoin(buff, " ");
+		free(buff);
+		buff = tmp;
 		fl->wdh -= 1;
 		fl->re += 1;
 	}
 	if (num < 0 && !fl->pl && !fl->isxox && !fl->unsign && !fl->isptr)
 	{
-		buff = ft_strjoin(buff, "-");
+		tmp = ft_strjoin(buff, "-");
+		free(buff);
+		buff = tmp;
 		fl->wdh -= 1;
 		fl->re += 1;
 	}
@@ -128,7 +127,9 @@ void ft_flag(t_flags *fl, long long int num, int r)
 		    fl->psn -= r;
 			while (fl->psn)
 			{
-				buff = ft_strjoin(buff, "0");
+				tmp = ft_strjoin(buff, "0");
+				free(buff);
+				buff = tmp;
 				fl->psn -= 1;
 				fl->wdh -= 1;
 				fl->re += 1;
@@ -142,13 +143,22 @@ void ft_flag(t_flags *fl, long long int num, int r)
 		while (fl->wdh)
 		{
 			if (fl->ze)
-				buff = ft_strjoin(buff, "0");
+			{
+				tmp = ft_strjoin(buff, "0");
+				free(buff);
+				buff = tmp;
+			}
 			else
-				buff = ft_strjoin(" ", buff);
-			fl->wdh -= 1;
-			fl->re += 1;
+			{
+				tmp = ft_strjoin(" ", buff);
+				free(buff);
+				buff = tmp;
+				fl->wdh -= 1;
+				fl->re += 1;
+			}
 		}
 	}
 	while(buff[i] != '\0')
 		write(1, &buff[i++], 1);
+	free(buff);
 }
