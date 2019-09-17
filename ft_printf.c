@@ -209,8 +209,8 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-// int main(void)
-// {
+ int main(void)
+{
 // 	double d = -92233720;
 // 	char c = 'h';
 // 	char *s = "priv!";
@@ -230,8 +230,9 @@ int	ft_printf(const char *restrict format, ...)
 // 	//ft_printf("%p", 0);
 //     // ft_printf("%-.2r\n", "\n\n\t\f");
 //     // printf("priv");
-// 	printf("%.0f\n", d);
-// 	ft_printf("%.0f\n", d);
+ 	printf("%f", -0.00032);
+ 	printf("\n");
+ 	ft_printf("%f", -0.00032);
 
-// 	return (0);
-// }
+    return (0);
+}

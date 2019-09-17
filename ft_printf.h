@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/05 21:46:14 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/17 02:26:33 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ int             ft_color(const char *restrict fo);
 void            ft_rspec(t_args *ag, t_flags *fl);
 char    		*ft_dtoa(t_flags *fl, long double x, int p);
 char    		*ft_fspec(t_args *ag, t_flags *fl);
+void			ft_fflag(t_flags *fl, char *s);
 
 #endif

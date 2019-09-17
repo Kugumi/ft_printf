@@ -84,7 +84,7 @@ char    *ft_dtoa(t_flags *fl, long double x, int p)
             p--;
         }
         str[t--] = '\0';
-        if (str[t] == '9')
+        if (str[t] == '9' && str[t - 1] == '9')
         {
             while(str[t] == '9')
             {
@@ -111,8 +111,10 @@ char    *ft_dtoa(t_flags *fl, long double x, int p)
         bp = bp / 10;
         c--;
     }
-    if (str[0] == '0' && isnull)
+    if (str[0] == '0' && !isnull)
         str[0] = '-';
+    if (!fl->mi)
+        ft_fflag(fl, str);
     ft_putstr(str);
     return (str);
 }
