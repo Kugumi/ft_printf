@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fflag.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/18 05:11:56 by jijerde           #+#    #+#             */
+/*   Updated: 2019/09/18 06:45:28 by jijerde          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_fflag(t_flags *fl, char *s, int num)
 {
-	char *buff;
-	char *tmp;
-	int i;
-	int r;
+	char	*buff;
+	char	*tmp;
+	int		i;
+	int		r;
 
 	r = (int)ft_strlen(s);
 	fl->re += r;
@@ -13,98 +25,36 @@ void	ft_fflag(t_flags *fl, char *s, int num)
 	buff = (char *)malloc(sizeof(char));
 	buff[i] = '\0';
 	if (fl->pl)
-	{
-		if (!num)
-		{
-			tmp = ft_strjoin(buff, "+");
-			free(buff);
-			buff = tmp;
-			fl->wdh -= 1;
-			fl->re += 1;
-		}
-        else
-        {
-            tmp = ft_strjoin(buff, "-");
-            free(buff);
-            buff = tmp;
-            fl->wdh -= 1;
-            fl->re += 1;
-        }
-	}
+		ftplf(&buff, fl, num);
 	else if (fl->sp && !num)
-	{
-		tmp = ft_strjoin(buff, " ");
-        free(buff);
-        buff = tmp;
-		fl->wdh -= 1;
-		fl->re += 1;
-	}
-    if (num && !fl->pl)
-    {
-        tmp = ft_strjoin(buff, "-");
-        free(buff);
-        buff = tmp;
-        fl->wdh -= 1;
-        fl->re += 1;
-    }
+		flspf(&buff, fl);
+	if (num && !fl->pl)
+		flnumf(&buff, fl);
 	if (fl->wdh > r)
-	{
-		fl->wdh -= r;
-		while (fl->wdh)
-		{
-			if (fl->ze)
-			{
-                tmp = ft_strjoin(buff, "0");
-                free(buff);
-                buff = tmp;
-            }
-			else
-            {
-                tmp = ft_strjoin(" ", buff);
-                free(buff);
-                buff = tmp;
-            }
-			fl->wdh -= 1;
-			fl->re += 1;
-		}
-	}
-	while(buff[i] != '\0')
+		flwdhf(&buff, fl, r);
+	while (buff[i] != '\0')
 		write(1, &buff[i++], 1);
 	free(buff);
 }
 
-void ft_fflagmi(t_flags *fl, char *s, int num)
+void	ft_fflagmi(t_flags *fl, char *s, int num)
 {
-    fl->re += (int)ft_strlen(s);
-    if (fl->mi)
-    {
-        if (fl->pl)
-        {
-            if (!num)
-            {
-                write(1, "+", 1);
-                fl->wdh -= 1;
-                fl->re += 1;
-            }
-            else
-            {
-                write(1, "-", 1);
-                fl->wdh -= 1;
-                fl->re += 1;
-            }
-        }
-        else if (fl->sp && !num)
-        {
-            write(1, " ", 1);
-            fl->wdh -= 1;
-            fl->re += 1;
-        }
-        if (num && !fl->pl)
-        {
-            write(1, "-", 1);
-            fl->wdh -= 1;
-            fl->re += 1;
-        }
-    }
+	fl->re += (int)ft_strlen(s);
+	if (fl->mi)
+	{
+		if (fl->pl)
+			flplmif(fl, num);
+		else if (fl->sp && !num)
+		{
+			write(1, " ", 1);
+			fl->wdh -= 1;
+			fl->re += 1;
+		}
+		if (num && !fl->pl)
+		{
+			write(1, "-", 1);
+			fl->wdh -= 1;
+			fl->re += 1;
+		}
+	}
 }
-

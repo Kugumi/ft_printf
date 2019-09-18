@@ -209,7 +209,7 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
-/* int main(void)
+ int main(void)
  {
 //  	double d = 92233720;
 // 	d = d + d / .0;
@@ -222,8 +222,8 @@ int	ft_printf(const char *restrict format, ...)
 // 	// ft_printf("%5%");
 // 	// write(1, "\n", 1);
 // 	// printf("\n%d", printf("%5%"));
-// 	// printf ("%s\n", NULL);
-// 	// ft_printf ("%s\n", NULL);
+//    printf ("%s\n", "priv");
+ //   ft_printf ("%s\n", "priv");
 // 	// printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
 // 	// ft_printf ("%100.2s", NULL);
 // 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
@@ -234,13 +234,13 @@ int	ft_printf(const char *restrict format, ...)
 //  	// printf("%f", d);
 //  	// printf("%Lf", -56.2012685l);
 // 	// printf("\n");
-// 	// printf("%.100Lf", -56.2012685l);
-// 	// printf("\n");
-//  	// ft_printf("%Lf", -56.2012685l);
+    printf("%-100f", 0);
+    printf("\n");
+    ft_printf("%-100f", 0);
 // 	// printf("\n\n\n\n");
 
- 	printf ("%.5p", 0);
- 	printf ("\n");
-    ft_printf ("%.5p", 0);
+// 	printf ("%.5p", 0);
+// 	printf ("\n");
+//    ft_printf ("%.5p", 0);
    return (0);
-}*/
+}

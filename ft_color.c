@@ -6,13 +6,13 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 00:36:53 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/10 01:48:37 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/18 04:43:17 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_colors2(char *s)
+int	ft_colors2(char *s)
 {
 	if (!(ft_strcmp("{blue}", s)))
 	{
@@ -77,7 +77,7 @@ int	ft_color(const char *restrict fo)
 		if (fo[f] == '}')
 		{
 			f++;
-			break;
+			break ;
 		}
 		f++;
 	}
