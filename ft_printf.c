@@ -234,9 +234,9 @@ int	ft_printf(const char *restrict format, ...)
 //  	// printf("%f", d);
 //  	// printf("%Lf", -56.2012685l);
 // 	// printf("\n");
-    printf("%-100f", 0);
+    printf("%010d", 0);
     printf("\n");
-    ft_printf("%-100f", 0);
+    ft_printf("%010d", 0);
 // 	// printf("\n\n\n\n");
 
 // 	printf ("%.5p", 0);

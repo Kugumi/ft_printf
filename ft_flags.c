@@ -1,25 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_flags.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/18 07:57:43 by jijerde           #+#    #+#             */
+/*   Updated: 2019/09/18 08:46:37 by jijerde          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int ft_flagsdi(const char *restrict fo, t_flags *fl, t_args *ag)
+int	ft_flagsdi(const char *restrict fo, t_flags *fl, t_args *ag)
 {
 	int f;
 
-	f = 0;
-	while (fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'l' && fo[f] != 'h'
-			&& fo[f] != '.' && !(fo[f] >= 49 && fo[f] <= 57) && fo[f] != '*')
-	{
-		if (fo[f] == '-')
-			fl->mi = !(fl->ze = 0) ? 1 : 1;
-		else if (fo[f] == '+')
-			fl->pl = !(fl->sp = 0) ? 1 : 1;
-		else if (fo[f] == ' ')
-			fl->sp = !(fl->pl) ? 1 : 0;
-		else if (fo[f] == '0')
-			fl->ze = !(fl->mi) ? 1 : 0;
-		else
-			return (-1);
-		f++;
-	}
+	if ((f = flagsdi2(fo, fl)) == -1)
+		return (-1);
 	if ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
 	{
 		ft_wdh(fo + f, fl, ag);
@@ -40,7 +38,7 @@ int ft_flagsdi(const char *restrict fo, t_flags *fl, t_args *ag)
 	return (1);
 }
 
-int ft_flagscsp(const char *restrict fo, t_flags *fl, t_args *ag)
+int	ft_flagscsp(const char *restrict fo, t_flags *fl, t_args *ag)
 {
 	int f;
 
@@ -69,16 +67,16 @@ int ft_flagscsp(const char *restrict fo, t_flags *fl, t_args *ag)
 		while ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
 			f++;
 		if (fo[f] == 'c')
-		    fl->psn = -1;
+			fl->psn = -1;
 		if (fo[f] == 'p')
-		    fl->psn = (fl->psn == 0) ? 0 : -1;
+			fl->psn = (fl->psn == 0) ? 0 : -1;
 	}
 	if (fo[f] != 'c' && fo[f] != 's' && fo[f] != 'p' && fo[f] != 'r')
 		return (-1);
 	return (1);
 }
 
-int ft_flagsf(const char *restrict fo, t_flags *fl, t_args *ag)
+int	ft_flagsf(const char *restrict fo, t_flags *fl, t_args *ag)
 {
 	int f;
 
@@ -87,9 +85,15 @@ int ft_flagsf(const char *restrict fo, t_flags *fl, t_args *ag)
 			!(fo[f] >= 49 && fo[f] <= 57) && fo[f] != '*')
 	{
 		if (fo[f] == '-')
-			fl->mi = !(fl->ze = 0) ? 1 : 1;
+		{
+			if (!(fl->ze = 0))
+				fl->mi = 1;
+		}
 		else if (fo[f] == '+')
-			fl->pl = !(fl->sp = 0) ? 1 : 1;
+		{
+			if (!(fl->sp = 0))
+				fl->pl = 1;
+		}
 		else if (fo[f] == ' ')
 			fl->sp = !(fl->pl) ? 1 : 0;
 		else if (fo[f] == '0')
@@ -118,7 +122,7 @@ int ft_flagsf(const char *restrict fo, t_flags *fl, t_args *ag)
 	return (1);
 }
 
-int ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag)
+int	ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag)
 {
 	int f;
 
@@ -128,8 +132,8 @@ int ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag)
 	{
 		if (fo[f] == '-')
 		{
-			if ((fl->mi = 1) && !(fl->ze = 0))
-				;
+			if (!(fl->ze = 0))
+				fl->mi = 1;
 		}
 		else if (fo[f] == '0')
 		{
@@ -137,7 +141,7 @@ int ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag)
 				fl->ze = 1;
 		}
 		else if (fo[f] == ' ' || fo[f] == '+')
-		    ;
+			;
 		else
 			return (-1);
 		f++;
@@ -162,18 +166,19 @@ int ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag)
 	return (1);
 }
 
-int ft_flagsoxX(const char *restrict fo, t_flags *fl, t_args *ag)
+int	ft_flagsoxX(const char *restrict fo, t_flags *fl, t_args *ag)
 {
 	int f;
 
 	f = 0;
 	while (fo[f] != 'o' && fo[f] != 'x' && fo[f] != 'X' && fo[f] != '.'
-			&& fo[f] != 'l' && fo[f] != 'h' && !(fo[f] >= 49 && fo[f] <= 57) && fo[f] != '*')
+			&& fo[f] != 'l' && fo[f] != 'h' && !(fo[f] >= 49 && fo[f] <= 57)
+			&& fo[f] != '*')
 	{
 		if (fo[f] == '-')
 		{
-			if ((fl->mi = 1) && !(fl->ze = 0))
-				;
+			if (!(fl->ze = 0))
+				fl->mi = 1;
 		}
 		else if (fo[f] == '0')
 			fl->ze = !(fl->mi) ? 1 : 0;
