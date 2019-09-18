@@ -69,8 +69,7 @@ t_flags			ft_filltf(t_flags *fl);
 int				ft_printf(const char *restrict format, ...);
 int				ft_flagsproc(const char *restrict fo, t_flags *fl, t_args *ag);
 int				ft_flagsdi(const char *restrict fo, t_flags *fl, t_args *ag);
-int 			ft_flagscsp(const char *restrict fo, t_flags *fl,
-		unsigned long long l, t_args *ag);
+int 			ft_flagscsp(const char *restrict fo, t_flags *fl, t_args *ag);
 int				ft_flagsf(const char *restrict fo, t_flags *fl, t_args *ag);
 int				ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag);
 int				ft_flagsoxX(const char *restrict fo, t_flags *fl, t_args *ag);

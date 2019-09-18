@@ -97,7 +97,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l, t_args 
 	if (fo[l - 2] == 'f')
 		return (ft_flagsf(fo, fl, ag));
 	if (fo[l - 2] == 'c' || fo[l - 2] == 's' || fo[l - 2] == 'p' || fo[l - 2] == 'r')
-		return (ft_flagscsp(fo, fl, l, ag));
+		return (ft_flagscsp(fo, fl, ag));
 	return (-1);
 }
 
@@ -239,8 +239,8 @@ int	ft_printf(const char *restrict format, ...)
 //  	// ft_printf("%Lf", -56.2012685l);
 // 	// printf("\n\n\n\n");
 
- 	printf ("%05%");
+ 	printf ("%.5p", 0);
  	printf ("\n");
-    ft_printf ("%05%");
+    ft_printf ("%.5p", 0);
    return (0);
 }*/

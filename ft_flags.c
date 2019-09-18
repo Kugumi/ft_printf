@@ -40,7 +40,7 @@ int ft_flagsdi(const char *restrict fo, t_flags *fl, t_args *ag)
 	return (1);
 }
 
-int ft_flagscsp(const char *restrict fo, t_flags *fl, unsigned long long l, t_args *ag)
+int ft_flagscsp(const char *restrict fo, t_flags *fl, t_args *ag)
 {
 	int f;
 
@@ -50,6 +50,8 @@ int ft_flagscsp(const char *restrict fo, t_flags *fl, unsigned long long l, t_ar
 	{
 		if (fo[f] == '-')
 			fl->mi = 1;
+		else if (fo[f] == ' ' || fo[f] == '#')
+			;
 		else
 			return (-1);
 		f++;
@@ -60,12 +62,16 @@ int ft_flagscsp(const char *restrict fo, t_flags *fl, unsigned long long l, t_ar
 		while ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
 			f++;
 	}
-	if (fo[f] == '.' && (fo[l - 2] == 's' || fo[l - 2] == 'r'))
+	if (fo[f] == '.')
 	{
 		ft_psn(fo + f, fl, ag);
 		f++;
 		while ((fo[f] >= 48 && fo[f] <= 57) || fo[f] == '*')
 			f++;
+		if (fo[f] == 'c')
+		    fl->psn = -1;
+		if (fo[f] == 'p')
+		    fl->psn = (fl->psn == 0) ? 0 : -1;
 	}
 	if (fo[f] != 'c' && fo[f] != 's' && fo[f] != 'p' && fo[f] != 'r')
 		return (-1);
@@ -130,6 +136,8 @@ int ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag)
 			if ((!fl->mi))
 				fl->ze = 1;
 		}
+		else if (fo[f] == ' ' || fo[f] == '+')
+		    ;
 		else
 			return (-1);
 		f++;

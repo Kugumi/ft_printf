@@ -140,6 +140,12 @@ char *ft_itoa_base(t_flags *fl, long long int n, int sz, char *base)
 	{
 		t[0] = '0';
 		t[1] = 'x';
+		if (fl->psn == 0)
+		{
+			t[2] = '\0';
+			fl->nn = 0;
+			fl->re += 2;
+		}
 	}
 	if (!fl->nn)
 		ft_putstr(t);
