@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 01:02:00 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/30 04:35:48 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/19 04:55:18 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,17 @@ void	ft_procspec(t_flags *fl)
 void	ft_flagstr(t_flags *fl, char *str)
 {
 	char	*buff;
-	char 	*tmp;
+	char	*tmp;
 	int		i;
-	size_t	j;
 
 	i = 0;
-	j = 0;
 	buff = (char *)malloc(sizeof(char));
+	if (buff == NULL)
+		exit(-1);
 	buff[i] = '\0';
-	if (fl->psn > 0)
-	{
-			buff = ft_strsub(str, 0, fl->psn);
-			fl->wdh -= (int)(j = ft_strlen(buff));
-			fl->re += (int)j;
-	}
-	else if (fl->psn == -1)
-    {
-	    tmp = ft_strjoin(buff, str);
-		free(buff);
-		buff = tmp;
-	    fl->wdh -= (int)(j = ft_strlen(buff));
-	    fl->re += (int)j;
-    }
+	ft_flagstr2(fl, str, &buff);
 	if (fl->wdh > 0)
 	{
-		//fl->wdh -= j;
 		while (fl->wdh)
 		{
 			tmp = ft_strjoin(" ", buff);
@@ -83,7 +69,23 @@ void	ft_flagstr(t_flags *fl, char *str)
 	free(buff);
 }
 
-int	ft_flagstrmi(t_flags *fl, char *str)
+int		ft_flagstrmi2(t_flags *fl, char *str, int psn1)
+{
+	int i;
+
+	i = 0;
+	while (psn1 && str[i])
+	{
+		write(1, &str[i], 1);
+		psn1 -= 1;
+		fl->wdh -= 1;
+		fl->re += 1;
+		i++;
+	}
+	return (i);
+}
+
+int		ft_flagstrmi(t_flags *fl, char *str)
 {
 	int i;
 	int psn1;
@@ -93,26 +95,17 @@ int	ft_flagstrmi(t_flags *fl, char *str)
 	if (fl->mi)
 	{
 		if (psn1 > 0)
+			i += ft_flagstrmi2(fl, str, psn1);
+		else if (psn1 == -1)
 		{
-			while (psn1 && str[i])
+			while (str[i])
 			{
 				write(1, &str[i], 1);
-				psn1 -= 1;
 				fl->wdh -= 1;
 				fl->re += 1;
 				i++;
 			}
 		}
-        else if (psn1 == -1)
-        {
-            while (str[i])
-            {
-                write(1, &str[i], 1);
-                fl->wdh -= 1;
-                fl->re += 1;
-                i++;
-            }
-        }
 	}
 	return (i);
 }
