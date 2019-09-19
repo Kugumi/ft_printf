@@ -209,7 +209,7 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
- int main(void)
+/* int main(void)
  {
 //  	double d = 92233720;
 // 	d = d + d / .0;
@@ -234,13 +234,13 @@ int	ft_printf(const char *restrict format, ...)
 //  	// printf("%f", d);
 //  	// printf("%Lf", -56.2012685l);
 // 	// printf("\n");
-    printf("%010d", 0);
+    printf("% 0+-#%");
     printf("\n");
-    ft_printf("%010d", 0);
+    ft_printf("% 0+-#%");
 // 	// printf("\n\n\n\n");
 
 // 	printf ("%.5p", 0);
 // 	printf ("\n");
 //    ft_printf ("%.5p", 0);
    return (0);
-}
+}*/

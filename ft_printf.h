@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/18 08:33:48 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/19 03:43:11 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,10 @@ void            ft_fflagmi(t_flags *fl, char *s, int num);
 void			flplmif(t_flags *fl, int num);
 void			flnumf(char **buff, t_flags *fl);
 int				flagsdi2(const char *restrict fo, t_flags *fl);
-
+void			ft_flagmi2(t_flags *fl, long long int num);
+void			ft_flagmi3(t_flags *fl, int r);
+void			ft_flag2(char **buff, t_flags *fl, long long int num);
+void			ft_flag3(char **buff, t_flags *fl, int r);
+void			ft_flag4(char **buff, t_flags *fl, int r);
+void			ft_flag5(char **buff, t_flags *fl);
 #endif

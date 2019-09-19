@@ -1,24 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fspec.c                                         :+:      :+:    :+:   */
+/*   ft_flag3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/19 04:07:43 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/19 04:09:36 by jijerde          ###   ########.fr       */
+/*   Created: 2019/09/19 03:34:43 by jijerde           #+#    #+#             */
+/*   Updated: 2019/09/19 03:48:07 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_fspec(t_args *ag, t_flags *fl)
+void	ft_flag4(char **buff, t_flags *fl, int r)
 {
-	if (!fl->lnh)
-		return (ft_dtoa(fl, va_arg(ag->args, double), fl->psn));
-	else if (fl->lnh == 1)
-		return (ft_dtoa(fl, va_arg(ag->args, double), fl->psn));
-	else if (fl->lnh == 5)
-		return (ft_dtoa(fl, va_arg(ag->args, long double), fl->psn));
-	return (0);
+	char *tmp;
+
+	if (r < fl->psn)
+	{
+		fl->psn -= r;
+		while (fl->psn)
+		{
+			tmp = ft_strjoin(*buff, "0");
+			free(*buff);
+			*buff = tmp;
+			fl->psn -= 1;
+			fl->wdh -= 1;
+			fl->re += 1;
+		}
+	}
+}
+
+void	ft_flag5(char **buff, t_flags *fl)
+{
+	char *tmp;
+
+	tmp = ft_strjoin(*buff, "-");
+	free(*buff);
+	*buff = tmp;
+	fl->wdh -= 1;
+	fl->re += 1;
 }

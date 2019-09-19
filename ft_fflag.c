@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 05:11:56 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/18 06:45:28 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/18 23:19:19 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_fflag(t_flags *fl, char *s, int num)
 {
 	char	*buff;
-	char	*tmp;
 	int		i;
 	int		r;
 
@@ -23,6 +22,8 @@ void	ft_fflag(t_flags *fl, char *s, int num)
 	fl->re += r;
 	i = 0;
 	buff = (char *)malloc(sizeof(char));
+	if (buff == NULL)
+		exit(-1);
 	buff[i] = '\0';
 	if (fl->pl)
 		ftplf(&buff, fl, num);
