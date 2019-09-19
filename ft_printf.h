@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/19 04:47:14 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/19 05:57:10 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,7 @@ void			ft_flag3(char **buff, t_flags *fl, int r);
 void			ft_flag4(char **buff, t_flags *fl, int r);
 void			ft_flag5(char **buff, t_flags *fl);
 void			ft_flagstr2(t_flags *fl, char *str, char **buff);
+void			ft_flagstrr2(t_flags *fl, char *str, char **b);
+void			ft_flagstrr3(char *b);
+void			ft_rspec2(t_flags *fl);
 #endif

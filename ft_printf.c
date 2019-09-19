@@ -229,14 +229,14 @@ int	ft_printf(const char *restrict format, ...)
 // 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
 // 	// printf("%p\n", 0);
 // 	// ft_printf("%p", 0);
-//     // ft_printf("%-.2r\n", "\n\n\t\f");
+     ft_printf("%-r\n", "\n\n\t\f");
 //     // printf("priv");
 //  	// printf("%f", d);
 //  	// printf("%Lf", -56.2012685l);
 // 	// printf("\n");
-    printf("%.10s", "priv");
-    printf("\n");
-    ft_printf("%.10s", "priv");
+ //   printf("%.10s", "priv");
+ //   printf("\n");
+ //   ft_printf("%.10s", "priv");
 // 	// printf("\n\n\n\n");
 
 // 	printf ("%.5p", 0);
