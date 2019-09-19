@@ -95,4 +95,10 @@ void			ft_flagstr2(t_flags *fl, char *str, char **buff);
 void			ft_flagstrr2(t_flags *fl, char *str, char **b);
 void			ft_flagstrr3(char *b);
 void			ft_rspec2(t_flags *fl);
+int				ft_lennbr_base(long long int n, int x);
+int				ft_lennbr_base_ull(unsigned long long int n, int x);
+int				ft_lennbr_base_ui(unsigned int n, int x);
+int				ft_lennbr_base_sh(unsigned short int n, int x);
+int				ft_lennbr_base_ch(unsigned char n, int x);
+
 #endif
