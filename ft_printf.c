@@ -42,7 +42,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l, t_args 
                     if (fo[l - 2] == 'u')
                         return (ft_flagsu(fo, fl, ag));
                     if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
-                        return (ft_flagsoxX(fo, fl, ag));
+                        return (ft_flagsoxx(fo, fl, ag));
                     else
                         return (-1);
                 }
@@ -54,7 +54,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l, t_args 
                     if (fo[l - 2] == 'u')
                         return (ft_flagsu(fo, fl, ag));
                     if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
-                        return (ft_flagsoxX(fo, fl, ag));
+                        return (ft_flagsoxx(fo, fl, ag));
                     else
                         return (-1);
                 }
@@ -69,7 +69,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l, t_args 
             if (fo[l - 2] == 'u')
                 return (ft_flagsu(fo, fl, ag));
             if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
-                return (ft_flagsoxX(fo, fl, ag));
+                return (ft_flagsoxx(fo, fl, ag));
             else
                 return (-1);
         }
@@ -81,7 +81,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l, t_args 
             if (fo[l - 2] == 'u')
                 return (ft_flagsu(fo, fl, ag));
             if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
-                return (ft_flagsoxX(fo, fl, ag));
+                return (ft_flagsoxx(fo, fl, ag));
             if (fo[l - 2] == 'f')
                 return (ft_flagsf(fo, fl, ag));
             else
@@ -93,7 +93,7 @@ int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l, t_args 
 	if (fo[l - 2] == 'u')
 		return (ft_flagsu(fo, fl, ag));
 	if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
-		return (ft_flagsoxX(fo, fl, ag));
+		return (ft_flagsoxx(fo, fl, ag));
 	if (fo[l - 2] == 'f')
 		return (ft_flagsf(fo, fl, ag));
 	if (fo[l - 2] == 'c' || fo[l - 2] == 's' || fo[l - 2] == 'p' || fo[l - 2] == 'r')
@@ -146,7 +146,7 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 	else if (fo[f] == 'p')
 		ft_pspec(ag, fl);
 	else if (fo[f] == 'x' || fo[f] == 'X' || fo[f] == 'o')
-		ft_xoXspec(ag, fl, fo + f);
+		ft_xoxspec(ag, fl, fo + f);
 	else if (fo[f] == 'c')
 		ft_cspec(ag, fl);
 	else if (fo[f] == 'f')
@@ -229,14 +229,14 @@ int	ft_printf(const char *restrict format, ...)
 // 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
 // 	// printf("%p\n", 0);
 // 	// ft_printf("%p", 0);
-     ft_printf("%-r\n", "\n\n\t\f");
+ //    ft_printf("%0#100.10o", 123);
 //     // printf("priv");
 //  	// printf("%f", d);
-//  	// printf("%Lf", -56.2012685l);
-// 	// printf("\n");
- //   printf("%.10s", "priv");
- //   printf("\n");
- //   ft_printf("%.10s", "priv");
+ 	 printf("%#-x", 20126);
+ 	 printf("\n");
+ 	 ft_printf("%#-x", 20126);
+    //printf("\n");
+   //ft_printf("%10.10s", "priv");
 // 	// printf("\n\n\n\n");
 
 // 	printf ("%.5p", 0);

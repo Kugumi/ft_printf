@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char *ft_xoXspec(t_args *ag, t_flags *fl, const char * restrict fo)
+char *ft_xoxspec(t_args *ag, t_flags *fl, const char * restrict fo)
 {
 	fl->isxox = 1;
 	if (fo[0] == 'x')

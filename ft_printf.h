@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/19 05:57:10 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/20 02:16:02 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			ft_cspec(t_args *ag, t_flags *fl);
 char			*ft_pspec(t_args *ag, t_flags *fl);
 void            ft_sspec(t_args *ag, t_flags *fl);
 char    		*ft_uspec(t_args *ag, t_flags *fl);
-char            *ft_xoXspec(t_args *ag, t_flags *fl, const char * restrict fo);
+char            *ft_xoxspec(t_args *ag, t_flags *fl, const char * restrict fo);
 void			ft_procspec(t_flags *fl);
 int				ft_psn(const char *restrict fo, t_flags *fl, t_args *ag);
 void			ft_wdh(const char *restrict fo, t_flags *fl, t_args *ag);
@@ -72,7 +72,7 @@ int				ft_flagsdi(const char *restrict fo, t_flags *fl, t_args *ag);
 int 			ft_flagscsp(const char *restrict fo, t_flags *fl, t_args *ag);
 int				ft_flagsf(const char *restrict fo, t_flags *fl, t_args *ag);
 int				ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag);
-int				ft_flagsoxX(const char *restrict fo, t_flags *fl, t_args *ag);
+int				ft_flagsoxx(const char *restrict fo, t_flags *fl, t_args *ag);
 int             ft_color(const char *restrict fo);
 void            ft_rspec(t_args *ag, t_flags *fl);
 char    		*ft_dtoa(t_flags *fl, long double x, int p);
@@ -100,5 +100,9 @@ int				ft_lennbr_base_ull(unsigned long long int n, int x);
 int				ft_lennbr_base_ui(unsigned int n, int x);
 int				ft_lennbr_base_sh(unsigned short int n, int x);
 int				ft_lennbr_base_ch(unsigned char n, int x);
+int				flagscsp2(const char *restrict fo, t_flags *fl);
+int				flagsf2(const char *restrict fo, t_flags *fl);
+int				ft_flagsu2(const char *restrict fo, t_flags *fl);
+int				ft_flagsoxx2(const char *restrict fo, t_flags *fl);
 
 #endif
