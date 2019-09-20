@@ -88,7 +88,7 @@ int						ft_flagsoxx(const char *fo, t_flags *fl, t_args *ag);
 int						ft_color(const char *restrict fo);
 void					ft_rspec(t_args *ag, t_flags *fl);
 char					*ft_dispec(t_args *ag, t_flags *fl);
-char					*ft_dtoa(t_flags *fl, double x, int p);
+char					*ft_dtoa(t_flags *fl, long double x, int p);
 char					*ft_fspec(t_args *ag, t_flags *fl);
 void					ft_fflag(t_flags *fl, char *s, int num);
 void					ftplf(char **buff, t_flags *fl, int num);

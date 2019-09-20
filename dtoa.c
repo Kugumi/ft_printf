@@ -97,9 +97,9 @@ int			nan_inf(double x, t_flags *fl)
 	return (0);
 }
 
-char		*ft_dtoa(t_flags *fl, double x, int p)
+char		*ft_dtoa(t_flags *fl, long double x, int p)
 {
-	long double			ap;
+	double			ap;
 	unsigned long long	bp;
 	char				*str;
 	t_d					val;
