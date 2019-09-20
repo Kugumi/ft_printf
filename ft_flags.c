@@ -35,7 +35,7 @@ int	ft_flagsdi(const char *fo, t_flags *fl, t_args *ag)
 	}
 	if (fo[f] != 'd' && fo[f] != 'i' && fo[f] != 'l' && fo[f] != 'h')
 		return (-1);
-	return (1);
+	return (0);
 }
 
 int	ft_flagscsp(const char *fo, t_flags *fl, t_args *ag)
@@ -87,7 +87,7 @@ int	ft_flagsf(const char *fo, t_flags *fl, t_args *ag)
 	}
 	if (fo[f] != 'f' && fo[f] != 'l' && fo[f] != 'L')
 		return (-1);
-	return (1);
+	return (0);
 }
 
 int	ft_flagsu(const char *fo, t_flags *fl, t_args *ag)
@@ -113,7 +113,7 @@ int	ft_flagsu(const char *fo, t_flags *fl, t_args *ag)
 	}
 	if (fo[f] != 'u' && fo[f] != 'l' && fo[f] != 'h')
 		return (-1);
-	return (1);
+	return (0);
 }
 
 int	ft_flagsoxx(const char *fo, t_flags *fl, t_args *ag)
@@ -140,5 +140,5 @@ int	ft_flagsoxx(const char *fo, t_flags *fl, t_args *ag)
 	if (fo[f] != 'o' && fo[f] != 'x' && fo[f] != 'X' && fo[f] != 'h' &&
 			fo[f] != 'l')
 		return (-1);
-	return (1);
+	return (0);
 }
