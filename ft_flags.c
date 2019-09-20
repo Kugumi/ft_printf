@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_flagsdi(const char *restrict fo, t_flags *fl, t_args *ag)
+int	ft_flagsdi(const char *fo, t_flags *fl, t_args *ag)
 {
 	int f;
 
@@ -38,7 +38,7 @@ int	ft_flagsdi(const char *restrict fo, t_flags *fl, t_args *ag)
 	return (1);
 }
 
-int	ft_flagscsp(const char *restrict fo, t_flags *fl, t_args *ag)
+int	ft_flagscsp(const char *fo, t_flags *fl, t_args *ag)
 {
 	int f;
 
@@ -66,7 +66,7 @@ int	ft_flagscsp(const char *restrict fo, t_flags *fl, t_args *ag)
 	return (1);
 }
 
-int	ft_flagsf(const char *restrict fo, t_flags *fl, t_args *ag)
+int	ft_flagsf(const char *fo, t_flags *fl, t_args *ag)
 {
 	int f;
 
@@ -90,7 +90,7 @@ int	ft_flagsf(const char *restrict fo, t_flags *fl, t_args *ag)
 	return (1);
 }
 
-int	ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag)
+int	ft_flagsu(const char *fo, t_flags *fl, t_args *ag)
 {
 	int f;
 
@@ -116,7 +116,7 @@ int	ft_flagsu(const char *restrict fo, t_flags *fl, t_args *ag)
 	return (1);
 }
 
-int	ft_flagsoxx(const char *restrict fo, t_flags *fl, t_args *ag)
+int	ft_flagsoxx(const char *fo, t_flags *fl, t_args *ag)
 {
 	int f;
 

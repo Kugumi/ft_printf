@@ -30,7 +30,7 @@ t_flags		ft_filltf(t_flags *fl)
 	return (*fl);
 }
 
-void		ft_psnb(t_flags *fl, const char *restrict fo)
+void		ft_psnb(t_flags *fl, const char *fo)
 {
 	int		f;
 	int		i;
@@ -48,7 +48,7 @@ void		ft_psnb(t_flags *fl, const char *restrict fo)
 	fl->psn = ft_atoi(buff);
 }
 
-void		ft_wdh(const char *restrict fo, t_flags *fl, t_args *ag)
+void		ft_wdh(const char *fo, t_flags *fl, t_args *ag)
 {
 	char	buff[11];
 	int		i;
@@ -76,7 +76,7 @@ void		ft_wdh(const char *restrict fo, t_flags *fl, t_args *ag)
 	}
 }
 
-int			ft_psn(const char *restrict fo, t_flags *fl, t_args *ag)
+int			ft_psn(const char *fo, t_flags *fl, t_args *ag)
 {
 	int		f;
 

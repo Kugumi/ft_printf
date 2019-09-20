@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	flagsdi2(const char *restrict fo, t_flags *fl)
+int	flagsdi2(const char *fo, t_flags *fl)
 {
 	int f;
 
@@ -41,7 +41,7 @@ int	flagsdi2(const char *restrict fo, t_flags *fl)
 	return (f);
 }
 
-int	flagscsp2(const char *restrict fo, t_flags *fl)
+int	flagscsp2(const char *fo, t_flags *fl)
 {
 	int f;
 
@@ -60,7 +60,7 @@ int	flagscsp2(const char *restrict fo, t_flags *fl)
 	return (f);
 }
 
-int	flagsf3(const char *restrict fo, t_flags *fl, int f)
+int	flagsf3(const char *fo, t_flags *fl, int f)
 {
 	if (fo[f] == '-')
 	{
@@ -83,7 +83,7 @@ int	flagsf3(const char *restrict fo, t_flags *fl, int f)
 	return (0);
 }
 
-int	flagsf2(const char *restrict fo, t_flags *fl)
+int	flagsf2(const char *fo, t_flags *fl)
 {
 	int f;
 
@@ -98,7 +98,7 @@ int	flagsf2(const char *restrict fo, t_flags *fl)
 	return (f);
 }
 
-int	ft_flagsu2(const char *restrict fo, t_flags *fl)
+int	ft_flagsu2(const char *fo, t_flags *fl)
 {
 	int f;
 

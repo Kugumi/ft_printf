@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_flagsproc2(const char *restrict fo, t_flags *fl)
+int	ft_flagsproc2(const char *fo, t_flags *fl)
 {
 	int f;
 
@@ -35,7 +35,7 @@ int	ft_flagsproc2(const char *restrict fo, t_flags *fl)
 	return (f);
 }
 
-int	ft_flagsproc(const char *restrict fo, t_flags *fl, t_args *ag)
+int	ft_flagsproc(const char *fo, t_flags *fl, t_args *ag)
 {
 	int f;
 

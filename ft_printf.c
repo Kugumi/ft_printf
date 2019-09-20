@@ -6,87 +6,23 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/05 21:42:41 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/20 06:39:10 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-#include <float.h>
-int ft_flags(const char *restrict fo, t_flags *fl, unsigned long long l, t_args *ag)
+
+int ft_flags(const char *fo, t_flags *fl, unsigned long long l, t_args *ag)
 {
     if (!(l - 2 == 0))
         if (fo[l - 2] == '%')
             return (ft_flagsproc(fo, fl, ag));
     if (fo[l - 3] == 'l' || fo[l - 3] == 'h' || fo[l - 3] == 'L')
 	{
-		if (fo[l - 3] == 'L')
-		{
-			if (fo[l - 2] == 'f')
-			{
-				fl->lnh = 5;
-				return (ft_flagsf(fo, fl, ag));
-			}
-			else
-				return (-1);
-		}
-        if (!(l - 3 == 0))
-        {
-            if (fo[l - 4] == 'l' || fo[l - 4] == 'h')
-            {
-                if (fo[l - 4] == 'l' && fo[l - 3] == 'l')
-                {
-					fl->lnh = 2;
-                    if ((fo[l - 2] == 'd' || fo[l - 2] == 'i'))
-                        return (ft_flagsdi(fo, fl, ag));
-                    if (fo[l - 2] == 'u')
-                        return (ft_flagsu(fo, fl, ag));
-                    if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
-                        return (ft_flagsoxx(fo, fl, ag));
-                    else
-                        return (-1);
-                }
-                if (fo[l - 4] == 'h' && fo[l - 3] == 'h')
-                {
-					fl->lnh = 4;
-                    if ((fo[l - 2] == 'd' || fo[l - 2] == 'i'))
-                        return (ft_flagsdi(fo, fl, ag));
-                    if (fo[l - 2] == 'u')
-                        return (ft_flagsu(fo, fl, ag));
-                    if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
-                        return (ft_flagsoxx(fo, fl, ag));
-                    else
-                        return (-1);
-                }
-                return (-1);
-            }
-        }
-        if (fo[l - 3] == 'h')
-        {
-			fl->lnh = 3;
-            if (fo[l - 2] == 'd' || fo[l - 2] == 'i')
-                return (ft_flagsdi(fo, fl, ag));
-            if (fo[l - 2] == 'u')
-                return (ft_flagsu(fo, fl, ag));
-            if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
-                return (ft_flagsoxx(fo, fl, ag));
-            else
-                return (-1);
-        }
-        if (fo[l - 3] == 'l')
-        {
-			fl->lnh = 1;
-            if (fo[l - 2] == 'd' || fo[l - 2] == 'i')
-                return (ft_flagsdi(fo, fl, ag));
-            if (fo[l - 2] == 'u')
-                return (ft_flagsu(fo, fl, ag));
-            if (fo[l - 2] == 'o' || fo[l - 2] == 'x' || fo[l - 2] == 'X')
-                return (ft_flagsoxx(fo, fl, ag));
-            if (fo[l - 2] == 'f')
-                return (ft_flagsf(fo, fl, ag));
-            else
-                return (-1);
-        }
+		if ((ft_pricont5(fo, fl, l, ag) == -1))
+			return (-1);
+		else
+			return (0);
 	}
 	if (fo[l - 2] == 'd' || fo[l - 2] == 'i')
 		return (ft_flagsdi(fo, fl, ag));
@@ -117,7 +53,7 @@ char	*ft_dispec(t_args *ag, t_flags *fl)
 	return (0);
 }
 
-int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
+int ft_spec(const char *fo, t_args *ag, t_flags *fl)
 {
 	int f;
 
@@ -162,7 +98,7 @@ int ft_spec(const char * restrict fo, t_args *ag, t_flags *fl)
 	return (1);
 }
 
-int	ft_printf(const char *restrict format, ...)
+int	ft_printf(const char *format, ...)
 {
 	t_args	ag;
 	t_err	err;
@@ -209,7 +145,7 @@ int	ft_printf(const char *restrict format, ...)
 	return (fl.re);
 }
 
- int main(void)
+/*  int main(void)
  {
 //  	double d = 92233720;
 // 	d = d + d / .0;
@@ -222,8 +158,8 @@ int	ft_printf(const char *restrict format, ...)
 // 	// ft_printf("%5%");
 // 	// write(1, "\n", 1);
 // 	// printf("\n%d", printf("%5%"));
-//    printf ("%s\n", "priv");
- //   ft_printf ("%s\n", "priv");
+	   	printf ("% hi\n", 24);
+    	ft_printf ("% hi\n", 24);
 // 	// printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
 // 	// ft_printf ("%100.2s", NULL);
 // 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
@@ -232,9 +168,9 @@ int	ft_printf(const char *restrict format, ...)
  //    ft_printf("%0#100.10o", 123);
 //     // printf("priv");
 //  	// printf("%f", d);
- 	 printf("%#-x", 20126);
- 	 printf("\n");
- 	 ft_printf("%#-x", 20126);
+ //	 printf("%#-x", 20126);
+ //	 printf("\n");
+ //	 ft_printf("%#-x %% %#d %d", 20126, 31, 31);
     //printf("\n");
    //ft_printf("%10.10s", "priv");
 // 	// printf("\n\n\n\n");
@@ -243,4 +179,4 @@ int	ft_printf(const char *restrict format, ...)
 // 	printf ("\n");
 //    ft_printf ("%.5p", 0);
    return (0);
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 21:38:30 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/19 03:50:01 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/20 04:19:23 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ void	ft_flag(t_flags *fl, long long int num, int r)
 {
 	char	*buff;
 	int		i;
+	char	*tmp;
 
+	tmp = NULL;
 	i = 0;
-	buff = (char *)malloc(sizeof(char));
-	if (buff == NULL)
+	if (!(buff = (char *)malloc(sizeof(char))))
 		exit(-1);
 	buff[i] = '\0';
 	ft_flag2(&buff, fl, num);
@@ -54,7 +55,7 @@ void	ft_flag(t_flags *fl, long long int num, int r)
 		fl->oc = 0;
 	(num == 0 && fl->xox == 2 && fl->psn != 0) ? fl->oc = 0 : 0;
 	if (fl->oc)
-		ft_oct(fl, &buff);
+		ft_oct(fl, &buff, tmp);
 	if (fl->psn > 0)
 		ft_flag4(&buff, fl, r);
 	if (fl->wdh > r)

@@ -6,13 +6,13 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 19:59:56 by jijerde           #+#    #+#             */
-/*   Updated: 2019/08/30 20:23:06 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/20 04:14:41 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *ft_xoxspec(t_args *ag, t_flags *fl, const char * restrict fo)
+char *ft_xoxspec(t_args *ag, t_flags *fl, const char *fo)
 {
 	fl->isxox = 1;
 	if (fo[0] == 'x')
@@ -70,10 +70,8 @@ char *ft_xoxspec(t_args *ag, t_flags *fl, const char * restrict fo)
 	return (0);
 }
 
-void ft_oct(t_flags *fl, char **buff)
+void ft_oct(t_flags *fl, char **buff, char *tmp)
 {
-    char *tmp;
-
 	if (fl->xox == 1)
     {
 		tmp = ft_strjoin("0x", *buff);
