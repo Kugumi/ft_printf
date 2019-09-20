@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dtoa.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/20 15:30:30 by kdeloise          #+#    #+#             */
+/*   Updated: 2019/09/20 15:33:06 by kdeloise         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void		ft_endf(t_flags *fl, char *str)
@@ -99,7 +111,7 @@ int			nan_inf(double x, t_flags *fl)
 
 char		*ft_dtoa(t_flags *fl, long double x, int p)
 {
-	double			ap;
+	double				ap;
 	unsigned long long	bp;
 	char				*str;
 	t_d					val;
