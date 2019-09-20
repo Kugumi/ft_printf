@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char *ft_xoxspec(t_args *ag, t_flags *fl, const char *fo)
+char	*ft_xoxspec(t_args *ag, t_flags *fl, const char *fo)
 {
 	fl->isxox = 1;
 	if (fo[0] == 'x')
@@ -21,84 +21,48 @@ char *ft_xoxspec(t_args *ag, t_flags *fl, const char *fo)
 		fl->xox = 2;
 	else if (fo[0] == 'X')
 		fl->xox = 3;
-
 	if (!fl->lnh)
-	{
-		if (fo[0] == 'x')
-			return (ft_itoa_base(fl, va_arg(ag->args, unsigned int), 4, "0123456789abcdef"));
-		else if (fo[0] == 'o')
-			return (ft_itoa_base(fl, va_arg(ag->args, unsigned int), 4, "01234567"));
-		else if (fo[0] == 'X')
-			return (ft_itoa_base(fl, va_arg(ag->args, unsigned int), 4, "0123456789ABCDEF"));
-	}
+		return (ft_lnh0(fl, ag, fo));
 	else if (fl->lnh == 2)
-	{
-		if (fo[0] == 'x')
-			return (ft_itoa_base(fl, va_arg(ag->args, unsigned long long int), 8, "0123456789abcdef"));
-		else if (fo[0] == 'o')
-			return (ft_itoa_base(fl, va_arg(ag->args, unsigned long long int), 8, "01234567"));
-		else if (fo[0] == 'X')
-			return (ft_itoa_base(fl, va_arg(ag->args, unsigned long long int), 8, "0123456789ABCDEF"));
-	}
+		return (ft_lnh2(fl, ag, fo));
 	else if (fl->lnh == 1)
-	{
-		if (fo[0] == 'x')
-			return (ft_itoa_base(fl, va_arg(ag->args, unsigned long int), 8, "0123456789abcdef"));
-		else if (fo[0] == 'o')
-			return (ft_itoa_base(fl, va_arg(ag->args, unsigned long int), 8, "01234567"));
-		else if (fo[0] == 'X')
-			return (ft_itoa_base(fl, va_arg(ag->args, unsigned long int), 8, "0123456789ABCDEF"));
-	}
+		return (ft_lnh1(fl, ag, fo));
 	else if (fl->lnh == 4)
-	{
-		if (fo[0] == 'x')
-			return (ft_itoa_base(fl, (unsigned char)va_arg(ag->args, unsigned int), 1, "0123456789abcdef"));
-		else if (fo[0] == 'o')
-			return (ft_itoa_base(fl, (unsigned char)va_arg(ag->args, unsigned int), 1, "01234567"));
-		else if (fo[0] == 'X')
-			return (ft_itoa_base(fl, (unsigned char)va_arg(ag->args, unsigned int), 1, "0123456789ABCDEF"));
-	}
+		return (ft_lnh4(fl, ag, fo));
 	else if (fl->lnh == 3)
-	{
-		if (fo[0] == 'x')
-			return (ft_itoa_base(fl, (unsigned short)va_arg(ag->args, unsigned int), 2, "0123456789abcdef"));
-		else if (fo[0] == 'o')
-			return (ft_itoa_base(fl, (unsigned short)va_arg(ag->args, unsigned int), 2, "01234567"));
-		else if (fo[0] == 'X')
-			return (ft_itoa_base(fl, (unsigned short)va_arg(ag->args, unsigned int), 2, "0123456789ABCDEF"));
-	}
+		return (ft_lnh3(fl, ag, fo));
 	return (0);
 }
 
-void ft_oct(t_flags *fl, char **buff, char *tmp)
+void	ft_oct(t_flags *fl, char **buff, char *tmp)
 {
 	if (fl->xox == 1)
-    {
+	{
 		tmp = ft_strjoin("0x", *buff);
 		free(*buff);
 		*buff = tmp;
 		fl->wdh -= 2;
 		fl->re += 2;
 	}
-    else if (fl->xox == 2)
+	else if (fl->xox == 2)
 	{
-    	tmp = ft_strjoin("0", *buff);
+		tmp = ft_strjoin("0", *buff);
 		free(*buff);
 		*buff = tmp;
-    	fl->wdh -= 1;
-    	fl->re += 1;
+		fl->wdh -= 1;
+		fl->re += 1;
 	}
-    else if (fl->xox == 3)
+	else if (fl->xox == 3)
 	{
-    	tmp = ft_strjoin("0X", *buff);
+		tmp = ft_strjoin("0X", *buff);
 		free(*buff);
 		*buff = tmp;
-    	fl->wdh -= 2;
-    	fl->re += 2;
+		fl->wdh -= 2;
+		fl->re += 2;
 	}
 }
 
-void ft_octmi(t_flags *fl)
+void	ft_octmi(t_flags *fl)
 {
 	if (fl->xox == 1)
 	{

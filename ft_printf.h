@@ -19,6 +19,15 @@
 # include "libft/libft.h"
 # include <string.h>
 
+typedef struct	t_d
+{
+	int 	c;
+	int		i;
+	int		t;
+	int		okr;
+	int		f;
+}				f_d;
+
 typedef struct	s_args
 {
 	unsigned long long	len;
@@ -79,7 +88,7 @@ int				ft_flagsoxx(const char *fo, t_flags *fl, t_args *ag);
 int             ft_color(const char *restrict fo);
 void            ft_rspec(t_args *ag, t_flags *fl);
 char			*ft_dispec(t_args *ag, t_flags *fl);
-char    		*ft_dtoa(t_flags *fl, long double x, int p);
+char    		*ft_dtoa(t_flags *fl, double x, int p);
 char    		*ft_fspec(t_args *ag, t_flags *fl);
 void			ft_fflag(t_flags *fl, char *s, int num);
 void			ftplf(char **buff, t_flags *fl, int num);
@@ -123,4 +132,12 @@ int				ft_flags(const char *fo, t_flags *fl, unsigned long long l,
 void			ft_spec3(const char *fo, t_args *ag, t_flags *fl, int f);
 int				ft_printf2(const char *format, t_flags *fl, t_args *ag, int f);
 int				ft_spec(const char *fo, t_args *ag, t_flags *fl);
+int     		lennbrf(double x);
+int				ft_lastbit(double x);
+char			*ft_lnh3(t_flags *fl, t_args *ag, const char *fo);
+char			*ft_lnh4(t_flags *fl, t_args *ag, const char *fo);
+char			*ft_lnh1(t_flags *fl, t_args *ag, const char *fo);
+char			*ft_lnh2(t_flags *fl, t_args *ag, const char *fo);
+char			*ft_lnh0(t_flags *fl, t_args *ag, const char *fo);
+
 #endif
