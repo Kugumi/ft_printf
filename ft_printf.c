@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 02:11:07 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/20 09:37:00 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/20 09:56:47 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	ft_flags(const char *fo, t_flags *fl, unsigned long long l, t_args *ag)
 		return (ft_flagsoxx(fo, fl, ag));
 	if (fo[l - 2] == 'f')
 		return (ft_flagsf(fo, fl, ag));
-	if (fo[l - 2] == 'c' || fo[l - 2] == 's' || fo[l - 2] == 'p' || fo[l - 2] == 'r')
+	if (fo[l - 2] == 'c' || fo[l - 2] == 's' || fo[l - 2] == 'p' ||
+			fo[l - 2] == 'r')
 		return (ft_flagscsp(fo, fl, ag));
 	return (-1);
 }
@@ -53,64 +54,27 @@ int	ft_printf(const char *format, ...)
 {
 	t_args	ag;
 	t_flags	fl;
-	int		f;
 	int		c;
 
 	va_start(ag.args, format);
-	f = 0;
+	fl.f = 0;
 	fl.re = 0;
-	while (format[f])
+	while (format[fl.f])
 	{
-		while (format[f] == '{')
+		while (format[fl.f] == '{')
 		{
-            ((c = ft_color(format + f)) != 0) ? f += c : 0;
+			((c = ft_color(format + fl.f)) != 0) ? fl.f += c : 0;
 			if (c == 0)
 				break ;
 		}
-		while (format[f] == '%')
-			if ((f = ft_printf2(format + f, &fl, &ag, f)) == 0)
+		while (format[fl.f] == '%')
+			if ((fl.f = ft_printf2(format + fl.f, &fl, &ag, fl.f)) == 0)
 				return (0);
-		if (!format[f])
+		if (!format[fl.f])
 			break ;
-		write(1, &format[f++], 1);
+		write(1, &format[fl.f++], 1);
 		fl.re += 1;
 	}
 	va_end(ag.args);
 	return (fl.re);
 }
-/*  int main(void)
- {
-//  	double d = 92233720;
-// 	d = d + d / .0;
-// 	// char c = 'h';
-// 	// char *s = "priv!";
-// 	// static long int ll = -42;
-// 	// int ll = 32767;
-// 	// long int l = 92;
-
-// 	// ft_printf("%5%");
-// 	// write(1, "\n", 1);
-// 	// printf("\n%d", printf("%5%"));
-	   	printf ("hello, %s.", "gavin");
-        printf("\n");
-    	ft_printf ("hello, %s.", "gavin");
-// 	// printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
-// 	// ft_printf ("%100.2s", NULL);
-// 	// ft_printf ("%llu, %llu, %u, %d\n", ll, -42, -42, -10);
-// 	// printf("%p\n", 0);
-// 	// ft_printf("%p", 0);
- //    ft_printf("%0#100.10o", 123);
-//     // printf("priv");
-//  	// printf("%f", d);
- //	 printf("%#-x", 20126);
- //	 printf("\n");
- //	 ft_printf("%#-x %% %#d %d", 20126, 31, 31);
-    //printf("\n");
-   //ft_printf("%10.10s", "priv");
-// 	// printf("\n\n\n\n");
-
-// 	printf ("%.5p", 0);
-// 	printf ("\n");
-//    ft_printf ("%.5p", 0);
-   return (0);
-}*/

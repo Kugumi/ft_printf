@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/20 09:02:55 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/20 09:51:53 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_flags
 	int					xox;  // 1 - x 2 - o 3 - X
 	int                 isxox; // xox or not
 	int					isptr; // for %p
+	int					f;
 }				t_flags;
 
 typedef struct	s_err
