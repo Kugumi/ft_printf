@@ -25,7 +25,7 @@ void		ft_endf(t_flags *fl, char *str)
 	str = NULL;
 }
 
-void		ft_bp(char *str, f_d *val, unsigned long long bp, long double ap)
+void		ft_bp(char *str, t_d *val, unsigned long long bp, long double ap)
 {
 	val->c--;
 	if ((ap >= 0.5 && val->i == 0) || val->okr == 1)
@@ -40,7 +40,7 @@ void		ft_bp(char *str, f_d *val, unsigned long long bp, long double ap)
 	}
 }
 
-long double	ft_ap(char *str, f_d *val, int p, long double ap)
+long double	ft_ap(char *str, t_d *val, int p, long double ap)
 {
 	if (p > 0)
 	{
@@ -102,7 +102,7 @@ char		*ft_dtoa(t_flags *fl, double x, int p)
 	long double			ap;
 	unsigned long long	bp;
 	char				*str;
-	f_d					val;
+	t_d					val;
 
 	if (nan_inf(x, fl) == 1)
 		return (NULL);
