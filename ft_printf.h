@@ -6,7 +6,7 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:59:02 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/20 07:16:53 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/20 09:02:55 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char 			*ft_itoa_base(t_flags *fl, long long int n, int sz,
 void			ft_cspec(t_args *ag, t_flags *fl);
 char			*ft_pspec(t_args *ag, t_flags *fl);
 void            ft_sspec(t_args *ag, t_flags *fl);
+int				ft_spec2(const char *fo, t_args *ag, t_flags *fl);
 char    		*ft_uspec(t_args *ag, t_flags *fl);
 char            *ft_xoxspec(t_args *ag, t_flags *fl, const char *fo);
 void			ft_procspec(t_flags *fl);
@@ -66,7 +67,7 @@ void			ft_wdh(const char *fo, t_flags *fl, t_args *ag);
 void            ft_oct(t_flags *fl, char **buff, char *tmp);
 void            ft_octmi(t_flags *fl);
 t_args			ft_fillta(t_args *ag);
-t_flags			ft_filltf(t_flags *fl);
+t_flags			*ft_filltf(t_flags *fl);
 int				ft_printf(const char *format, ...);
 int				ft_flagsproc(const char *fo, t_flags *fl, t_args *ag);
 int				ft_flagsdi(const char *fo, t_flags *fl, t_args *ag);
@@ -76,6 +77,7 @@ int				ft_flagsu(const char *fo, t_flags *fl, t_args *ag);
 int				ft_flagsoxx(const char *fo, t_flags *fl, t_args *ag);
 int             ft_color(const char *restrict fo);
 void            ft_rspec(t_args *ag, t_flags *fl);
+char			*ft_dispec(t_args *ag, t_flags *fl);
 char    		*ft_dtoa(t_flags *fl, long double x, int p);
 char    		*ft_fspec(t_args *ag, t_flags *fl);
 void			ft_fflag(t_flags *fl, char *s, int num);
@@ -115,5 +117,9 @@ int				ft_pricont5(const char *fo, t_flags *fl, unsigned long long l,
 				t_args *ag);
 int				ft_pricont6(const char *fo, t_flags *fl, unsigned long long l,
 				t_args *ag);
-
+int				ft_flags(const char *fo, t_flags *fl, unsigned long long l,
+				t_args *ag);
+void			ft_spec3(const char *fo, t_args *ag, t_flags *fl, int f);
+int				ft_printf2(const char *format, t_flags *fl, t_args *ag, int f);
+int				ft_spec(const char *fo, t_args *ag, t_flags *fl);
 #endif

@@ -6,13 +6,13 @@
 /*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 07:21:50 by jijerde           #+#    #+#             */
-/*   Updated: 2019/09/18 07:56:10 by jijerde          ###   ########.fr       */
+/*   Updated: 2019/09/20 09:08:15 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_flags		ft_filltf(t_flags *fl)
+t_flags		*ft_filltf(t_flags *fl)
 {
 	fl->mi = 0;
 	fl->pl = 0;
@@ -27,7 +27,7 @@ t_flags		ft_filltf(t_flags *fl)
 	fl->isxox = 0;
 	fl->unsign = 0;
 	fl->isptr = 0;
-	return (*fl);
+	return (fl);
 }
 
 void		ft_psnb(t_flags *fl, const char *fo)
