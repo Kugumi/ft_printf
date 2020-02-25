@@ -3,13 +3,14 @@
 ### Installation
 
 ```
-$ git clone https://github.com/fica99/42sh.git
-$ cd 42sh
+$ git clone https://github.com/Kugumi/ft_printf.git
+$ cd ft_printf
 $ make
+$ gcc -Wall -Wextra -Werror main.c libftprintf.a
 ```
 
 ### Usage
 
 ```
-$ ./42sh
+$ ./a.out
 ```
