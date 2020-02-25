@@ -12,5 +12,5 @@ $ gcc -Wall -Wextra -Werror main.c libftprintf.a
 ### Usage
 
 ```
-$ ./a.out
+Change main.c and compile again (gcc -Wall -Wextra -Werror main.c libftprintf.a)
 ```
