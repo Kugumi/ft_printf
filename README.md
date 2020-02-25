@@ -43,4 +43,4 @@ Change main.c with the following conversions and flags and compile again (gcc -W
 | + | Prepends a plus for positive signed-numeric types. |
 | ⌴ (space) | Prepends a space for positive signed-numeric types. |
 
-Manage the field-width and precision
+Manage the field-width and precision.
