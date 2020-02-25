@@ -20,21 +20,19 @@ Change main.c with the following conversions and flags and compile again (gcc -W
 ### Conversions
 |        |        |
 | ------ | ------ |
-| c | Returns true if file is "block-special". |
-| s | Returns true if file is "character-special." |
-| p | Returns true if file is a directory. |
-| d | Returns true if file exists. |
-| i | Returns true if file exists, and is a regular file. |
-| o | Returns true if file has the setgid bit set. |
-| u | Returns true if file is a symbolic link. |
-| x | Returns true if the file is a named pipe. |
-| X | Returns true if file is readable by the user running test. |
-| hh | Returns true if file exists, and is not empty. |
-| h | Returns true if file is a socket. |
-| l | Returns true if file has the setuid bit set. |
-| ll | Returns true if the user running test has write permission to file. |
-| f, lf, Lf | Returns true if file is executable by the user running test. |
-| %% | Returns true if string string is empty, i.e. "". |
+| c | char (character). |
+| s | null-terminated string. |
+| p | void * (pointer to void) in an implementation-defined format. |
+| d, i | int as a signed integer. |
+| o | unsigned int in octal. |
+| u | Print decimal unsigned int. |
+| x, X | unsigned int as a hexadecimal number. x uses lower-case letters and X uses upper-case. |
+| hh | For integer types, causes printf to expect an int-sized integer argument which was promoted from a char. |
+| h | For integer types, causes printf to expect an int-sized integer argument which was promoted from a short. |
+| l | For integer types, causes printf to expect a long-sized integer argument. |
+| ll | For integer types, causes printf to expect a long long-sized integer argument. |
+| f, lf, Lf | double in normal (fixed-point) notation. For floating point types, l has no effect. L for floating point types, causes printf to expect a long double argument. |
+| %% | Prints a literal % character |
 
 ### Flags
 |        |        |
