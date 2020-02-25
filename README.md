@@ -44,3 +44,5 @@ Change main.c with the following conversions and flags and compile again (gcc -W
 | - | Returns true if file is a directory. |
 | + | Returns true if file exists. |
 | ⌴ | Returns true if file exists, and is a regular file. |
+
+Manage the field-width and precision
