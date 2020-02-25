@@ -39,10 +39,10 @@ Change main.c with the following conversions and flags and compile again (gcc -W
 ### Flags
 |        |        |
 | ------ | ------ |
-| # | Returns true if file is "block-special". |
-| 0 | Returns true if file is "character-special." |
-| - | Returns true if file is a directory. |
-| + | Returns true if file exists. |
-| ⌴ | Returns true if file exists, and is a regular file. |
+| # | Alternate form: For f type, the output always contains a decimal point. For o, x, X types, the text 0, 0x, 0X, respectively, is prepended to non-zero numbers. |
+| 0 | When the 'width' option is specified, prepends zeros for numeric types. |
+| - | Left-align the output of this placeholder. (The default is to right-align the output.) |
+| + | Prepends a plus for positive signed-numeric types. |
+| ⌴ (space) | Prepends a space for positive signed-numeric types. |
 
 Manage the field-width and precision
