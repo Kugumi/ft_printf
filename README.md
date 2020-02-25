@@ -1,5 +1,7 @@
 # ft_printf
 
+Recode the libc’s printf function.
+
 ### Installation
 
 ```
