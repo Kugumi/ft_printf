@@ -2,6 +2,8 @@
 
 Recode the libc’s printf function.
 
+That project enable to **discover variadic functions in C in a particularly relevant** context as well as learn about a great example of a **basic “dispatcher” in C via the use of an array of function’s pointers**.
+
 ### Installation
 
 ```
