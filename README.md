@@ -7,8 +7,11 @@ That project enable to **discover variadic functions in C in a particularly rele
 Improving skills
 
 > Imperative programming
+
 > Unix
+
 > Algorithms & AI
+
 > Rigor
 
 ### Installation
