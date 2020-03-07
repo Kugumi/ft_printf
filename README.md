@@ -6,13 +6,13 @@ That project enable to **discover variadic functions in C in a particularly rele
 
 Improving skills:
 
-> Imperative programming
+> ++Imperative programming
 
-> Unix
+> ++Unix
 
-> Algorithms & AI
+> ++Algorithms & AI
 
-> Rigor
+> ++Rigor
 
 ### Installation
 
